@@ -1,0 +1,148 @@
+@import 'tailwindcss';
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TOKENS DE DISEÑO
+   ───────────────────────────────────────────────────────────────────────────
+   Paleta sacada del logo con un cuentagotas, no elegida a ojo:
+     #062F5E  el "HOY"           → navy de marca
+     #006EC4  la gota            → acento (afinado a #0A6CC2: el texto azul
+                                    sobre los fondos tintados no llegaba a 4.5)
+     #202424  el sifón           → grafito
+
+   Todos los pares texto/fondo están verificados en scripts/verificar-contraste.mjs
+   El sitio no tiene modo oscuro a propósito: una sola cara, siempre igual.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* Marca */
+  --color-navy: #062f5e;
+  --color-navy-900: #071a2e; /* fondo oscuro: hero alterno, footer */
+  --color-navy-800: #0b2745;
+
+  /* Acento — todos los CTA */
+  --color-acento: #0a6cc2; /* ~ la gota del logo. Blanco encima = 5.33:1 ✓ */
+  --color-acento-fuerte: #0960ab; /* hover / active */
+  --color-acento-claro: #4aa3e3; /* acento sobre fondo oscuro */
+  --color-acento-tenue: #e8f2fc; /* fondos de realce */
+
+  /* WhatsApp — el verde de marca (#25D366) da 2.0:1 y es inusable con texto */
+  --color-wa: #0b7a66;
+  --color-wa-fuerte: #096354;
+
+  /* Tinta y papel */
+  --color-tinta: #101d2b; /* texto principal */
+  --color-tinta-suave: #4a5a6b; /* texto secundario */
+  --color-papel: #ffffff;
+  --color-papel-tenue: #f4f7fb;
+  --color-borde: #dbe3ec;
+  --color-grafito: #202424;
+
+  /* Tipografía: una sola familia, contraste por peso */
+  --font-sans: var(--fuente-archivo), ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', Roboto, Arial, sans-serif;
+
+  /* Alto de la barra fija de mobile, para reservar espacio abajo */
+  --espacio-barra-fija: 4.5rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BASE
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-papel);
+    color: var(--color-tinta);
+    font-family: var(--font-sans);
+    text-wrap: pretty;
+    /* La barra fija de mobile tapa el final del documento. */
+    padding-bottom: var(--espacio-barra-fija);
+  }
+
+  @media (min-width: 768px) {
+    body {
+      padding-bottom: 0;
+    }
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+  }
+
+  /* Foco visible y consistente en todo lo interactivo. */
+  :where(a, button, summary, [tabindex]):focus-visible {
+    outline: 3px solid var(--color-acento);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Sobre fondo oscuro el outline azul se pierde. */
+  :where(.sobre-oscuro) :where(a, button, summary):focus-visible {
+    outline-color: #ffffff;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   UTILIDADES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@utility contenedor {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 76rem;
+  padding-inline: 1.25rem;
+
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
+}
+
+/* Aparición al entrar en pantalla, movida por el scroll (cero JavaScript).
+ *
+ * Mueve SÓLO el transform, nunca la opacidad. Una animación con opacity:0 y
+ * fill `both` deja el contenido invisible en cuanto el timeline queda
+ * degenerado — pasa en la captura de página completa de Chrome, en el
+ * renderizado de vistas previas y en cualquier viewport tan alto como el
+ * documento. En un sitio cuyo único trabajo es que se lea el teléfono, eso no
+ * se puede arriesgar: lo peor que puede pasar acá es que algo quede corrido
+ * 12px, y se sigue leyendo todo.
+ */
+@utility aparece {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: aparecer linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
+}
+
+@keyframes aparecer {
+  from {
+    transform: translateY(12px);
+  }
+  to {
+    transform: none;
+  }
+}
