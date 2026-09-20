@@ -46,3 +46,5 @@ next-env.d.ts
 # scratch de HTML rescatado del WordPress viejo
 /_rescate/home.html
 /_rescate/texto-home.txt
+
+.vercel

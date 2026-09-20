@@ -30,6 +30,16 @@ const rutasViejasDeWordPress = [
   '/index.php/:path*',
 ]
 
+/**
+ * Mientras el sitio no esté aprobado y el dominio siga apuntando al WordPress
+ * viejo, este deploy NO se indexa: duplicaría el sitio que está en vivo y
+ * todavía hay datos sin confirmar con el cliente (garantía, costo de la
+ * visita, plazos).
+ *
+ * PARA SALIR EN VIVO: poner esto en false y volver a publicar.
+ */
+const BLOQUEAR_INDEXACION = true
+
 const nextConfig: NextConfig = {
   poweredByHeader: false,
 
@@ -67,6 +77,12 @@ const nextConfig: NextConfig = {
 
   async headers() {
     return [
+      ...(BLOQUEAR_INDEXACION
+        ? [{
+            source: '/:path*',
+            headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+          }]
+        : []),
       {
         source: '/:path*',
         headers: [

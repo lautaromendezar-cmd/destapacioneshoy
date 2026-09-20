@@ -1,0 +1,9 @@
+# Material fuente del rescate del WordPress viejo: es la copia de trabajo,
+# no va al sitio publicado.
+_rescate/
+
+# Herramientas de desarrollo, no las necesita el build.
+scripts/
+
+# Documentación interna.
+*.md
