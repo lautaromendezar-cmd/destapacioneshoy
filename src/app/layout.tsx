@@ -60,6 +60,22 @@ export const metadata: Metadata = {
     googleBot: { 'max-image-preview': 'large' },
   },
   formatDetection: { telephone: true },
+  /**
+   * Verificación de Google Search Console.
+   *
+   * La propiedad —el prefijo https://destapacioneshoy.com.ar/— estaba
+   * verificada SÓLO por un archivo HTML alojado en el WordPress. Ese archivo
+   * deja de existir en cuanto el dominio apunte acá, y sin otro método Google
+   * desverifica la propiedad: los datos quedan, pero se pierde el acceso al
+   * historial hasta volver a verificarla.
+   *
+   * Esta etiqueta viaja con el sitio nuevo, así que la verificación sobrevive
+   * a la mudanza. No se saca nunca, aunque figure como verificada: Google
+   * revalida cada tanto y si no la encuentra, desverifica.
+   */
+  verification: {
+    google: 'lg0W36iwEf9mHGb_wfzYraT3ItCXbay2ahoTAV5s2-g',
+  },
 }
 
 export const viewport: Viewport = {
