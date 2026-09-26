@@ -71,7 +71,7 @@ export default async function PaginaZona({ params }: PageProps<'/zonas/[slug]'>)
             {sitio.horario.textoCorto}
           </p>
 
-          <h1 className="mt-4 max-w-3xl text-[2rem] font-extrabold leading-[1.1] text-navy sm:text-5xl">
+          <h1 className="mt-4 max-w-3xl text-[2rem] font-semibold leading-[1.1] text-banda sm:text-5xl">
             {zona.h1}
           </h1>
 
@@ -105,7 +105,7 @@ export default async function PaginaZona({ params }: PageProps<'/zonas/[slug]'>)
       {/* ── Particularidades de la zona ─────────────────────────────────── */}
       <section className="border-t border-borde bg-white py-14 md:py-20">
         <div className="contenedor">
-          <h2 className="text-2xl font-extrabold text-navy sm:text-3xl">
+          <h2 className="text-2xl font-bold text-banda sm:text-3xl">
             Qué se tapa más seguido en {zona.nombreEnFrase}
           </h2>
           <div className="max-w-3xl">
@@ -117,7 +117,7 @@ export default async function PaginaZona({ params }: PageProps<'/zonas/[slug]'>)
       {/* ── Localidades ─────────────────────────────────────────────────── */}
       <section className="sobre-oscuro bg-banda py-14 text-white md:py-20">
         <div className="contenedor">
-          <h2 className="text-2xl font-extrabold sm:text-3xl">
+          <h2 className="text-2xl font-bold sm:text-3xl">
             Dónde llegamos en {zona.nombreEnFrase}
           </h2>
           <ul className="mt-6 flex flex-wrap gap-2.5">
@@ -139,7 +139,7 @@ export default async function PaginaZona({ params }: PageProps<'/zonas/[slug]'>)
       {/* ── Servicios en esta zona ──────────────────────────────────────── */}
       <section className="border-t border-borde bg-papel-tenue py-14 md:py-20">
         <div className="contenedor">
-          <h2 className="text-2xl font-extrabold text-navy sm:text-3xl">
+          <h2 className="text-2xl font-bold text-banda sm:text-3xl">
             Servicios en {zona.nombreEnFrase}
           </h2>
 
@@ -167,7 +167,7 @@ export default async function PaginaZona({ params }: PageProps<'/zonas/[slug]'>)
           </ul>
 
           <div className="mt-12">
-            <h2 className="text-xl font-bold text-navy">Otras zonas</h2>
+            <h2 className="text-xl font-bold text-banda">Otras zonas</h2>
             <ul className="mt-4 flex flex-wrap gap-2.5">
               {otras.map((otra) => (
                 <li key={otra.slug}>

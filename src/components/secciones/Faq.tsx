@@ -26,7 +26,7 @@ export function Faq({
       <div className="contenedor">
         <h2
           id="titulo-faq"
-          className="max-w-2xl text-3xl font-extrabold text-navy sm:text-4xl"
+          className="max-w-2xl text-3xl font-bold text-banda sm:text-4xl lg:text-[2.75rem]"
         >
           {titulo}
         </h2>

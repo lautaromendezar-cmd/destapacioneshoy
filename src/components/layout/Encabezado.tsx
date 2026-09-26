@@ -10,6 +10,12 @@ import { datosCta, linkTelefono, rutas } from '@/lib/rutas'
  * Deliberadamente flaco: entre los dos ocupan ~92px, para que en un celular
  * de 360x640 el hero entero entre sin scrollear. Tampoco hay menú de
  * navegación: en una urgencia, un menú es una forma de perder la llamada.
+ *
+ * Los dos van sobre el mismo degradé oscuro del cliente. El encabezado era
+ * blanco y cortaba la página en dos justo antes de la foto del hero, que en
+ * su WordPress arrancaba pegada a la barra de urgencia. Así el arranque
+ * vuelve a ser un solo bloque oscuro que entra en la foto — con el logo y el
+ * teléfono, que él no tenía.
  */
 export function Encabezado() {
   return (
@@ -22,11 +28,11 @@ export function Encabezado() {
         </div>
       </div>
 
-      <div className="border-b border-borde bg-white">
+      <div className="sobre-oscuro degrade-barra">
         <div className="contenedor flex items-center justify-between gap-4 py-3">
           <Link href={rutas.home} aria-label={`${sitio.nombre} — inicio`}>
             <Image
-              src="/images/logo-destapaciones-hoy.webp"
+              src="/images/logo-destapaciones-hoy-fondo-oscuro.webp"
               alt={sitio.nombre}
               width={1029}
               height={376}
@@ -39,7 +45,7 @@ export function Encabezado() {
           <a
             href={linkTelefono}
             {...datosCta('llamada', 'header')}
-            className="hidden items-center gap-2 rounded-lg px-3 py-2 text-lg font-bold text-navy transition-colors hover:bg-acento-tenue sm:inline-flex"
+            className="hidden items-center gap-2 rounded-lg px-3 py-2 text-lg font-bold text-white transition-colors hover:bg-white/10 sm:inline-flex"
           >
             <Phone className="size-5" strokeWidth={2.25} aria-hidden="true" />
             <span className="tabular-nums">{sitio.telefono.visible}</span>

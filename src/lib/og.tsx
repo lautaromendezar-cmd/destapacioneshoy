@@ -9,9 +9,9 @@ import { sitio } from '@contenido'
  * Una sola plantilla para todas las páginas, con el título cambiado. Se
  * generan en el build, así que no cuestan nada en runtime.
  *
- * Las tipografías son instancias estáticas de Archivo (assets/), sacadas de la
- * variable con fonttools: satori no interpola ejes variables y con la variable
- * el peso 800 saldría en 400.
+ * Las tipografías son instancias estáticas de Inter Tight (assets/), la misma
+ * que usan los títulos del sitio: satori no interpola ejes variables, así que
+ * con la variable los dos pesos saldrían iguales.
  *
  * El logo va dibujado con texto y no importado: el PNG del cliente trae el
  * "HOY" en navy, que sobre este fondo desaparecería.
@@ -26,9 +26,9 @@ export async function renderOg({
   titulo: string
   bajada: string
 }) {
-  const [medium, extraBold] = await Promise.all([
-    readFile(join(process.cwd(), 'assets/Archivo-Medium.ttf')),
-    readFile(join(process.cwd(), 'assets/Archivo-ExtraBold.ttf')),
+  const [medium, bold] = await Promise.all([
+    readFile(join(process.cwd(), 'assets/InterTight-Medium.ttf')),
+    readFile(join(process.cwd(), 'assets/InterTight-Bold.ttf')),
   ])
 
   // El título manda sobre el tamaño: uno largo baja a 66px para no desbordar.
@@ -45,7 +45,7 @@ export async function renderOg({
           justifyContent: 'space-between',
           backgroundColor: '#071a2e',
           padding: '68px 72px',
-          fontFamily: 'Archivo',
+          fontFamily: 'Inter Tight',
         }}
       >
         <div
@@ -64,14 +64,14 @@ export async function renderOg({
             <span
               style={{
                 fontSize: 40,
-                fontWeight: 800,
+                fontWeight: 700,
                 color: '#ffffff',
                 letterSpacing: '-0.01em',
               }}
             >
               DESTAPACIONES
             </span>
-            <span style={{ fontSize: 40, fontWeight: 800, color: '#4aa3e3' }}>
+            <span style={{ fontSize: 40, fontWeight: 700, color: '#4aa3e3' }}>
               HOY
             </span>
           </div>
@@ -80,7 +80,7 @@ export async function renderOg({
             style={{
               display: 'flex',
               fontSize: tamanoTitulo,
-              fontWeight: 800,
+              fontWeight: 700,
               color: '#ffffff',
               lineHeight: 1.05,
               letterSpacing: '-0.03em',
@@ -119,7 +119,7 @@ export async function renderOg({
               backgroundColor: '#0a6cc2',
               color: '#ffffff',
               fontSize: 52,
-              fontWeight: 800,
+              fontWeight: 700,
               padding: '18px 34px',
               borderRadius: 18,
             }}
@@ -143,8 +143,8 @@ export async function renderOg({
     {
       ...TAMANO_OG,
       fonts: [
-        { name: 'Archivo', data: medium, style: 'normal', weight: 500 },
-        { name: 'Archivo', data: extraBold, style: 'normal', weight: 800 },
+        { name: 'Inter Tight', data: medium, style: 'normal', weight: 500 },
+        { name: 'Inter Tight', data: bold, style: 'normal', weight: 700 },
       ],
     },
   )

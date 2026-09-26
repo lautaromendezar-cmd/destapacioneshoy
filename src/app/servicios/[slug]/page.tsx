@@ -71,7 +71,7 @@ export default async function PaginaServicio({
         <div className="contenedor">
           <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-14">
             <div>
-              <h1 className="text-[2rem] font-extrabold leading-[1.1] text-navy sm:text-5xl">
+              <h1 className="text-[2rem] font-semibold leading-[1.1] text-banda sm:text-5xl">
                 {servicio.h1}
               </h1>
 
@@ -121,13 +121,13 @@ export default async function PaginaServicio({
       <section className="border-t border-borde bg-white py-14 md:py-20">
         <div className="contenedor grid gap-12 md:grid-cols-2 md:gap-16">
           <div>
-            <h2 className="text-2xl font-extrabold text-navy sm:text-3xl">
+            <h2 className="text-2xl font-bold text-banda sm:text-3xl">
               Cómo te das cuenta
             </h2>
             <ListaConCheck items={servicio.sintomas} />
           </div>
           <div>
-            <h2 className="text-2xl font-extrabold text-navy sm:text-3xl">
+            <h2 className="text-2xl font-bold text-banda sm:text-3xl">
               Por qué se tapa
             </h2>
             <ListaConCheck items={servicio.causas} />
@@ -138,7 +138,7 @@ export default async function PaginaServicio({
       {/* ── Cómo lo resolvemos ──────────────────────────────────────────── */}
       <section className="sobre-oscuro bg-banda py-14 text-white md:py-20">
         <div className="contenedor">
-          <h2 className="max-w-2xl text-2xl font-extrabold sm:text-3xl">
+          <h2 className="max-w-2xl text-2xl font-bold sm:text-3xl">
             Cómo lo resolvemos
           </h2>
           <ol className="mt-6 max-w-3xl space-y-5">
@@ -161,7 +161,7 @@ export default async function PaginaServicio({
       <section className="border-t border-borde bg-papel-tenue py-14 md:py-20">
         <div className="contenedor grid gap-12 md:grid-cols-2 md:gap-16">
           <div>
-            <h2 className="text-xl font-bold text-navy">
+            <h2 className="text-xl font-bold text-banda">
               Dónde hacemos este servicio
             </h2>
             <ul className="mt-4 flex flex-wrap gap-2.5">
@@ -180,7 +180,7 @@ export default async function PaginaServicio({
           </div>
 
           <div>
-            <h2 className="text-xl font-bold text-navy">Otros servicios</h2>
+            <h2 className="text-xl font-bold text-banda">Otros servicios</h2>
             <ul className="mt-4 space-y-2.5">
               {otros.map((otro) => (
                 <li key={otro.slug}>

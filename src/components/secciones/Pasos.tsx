@@ -10,7 +10,7 @@ export function Pasos() {
         <div className="max-w-2xl">
           <h2
             id="titulo-pasos"
-            className="text-3xl font-extrabold text-navy sm:text-4xl"
+            className="text-3xl font-bold text-banda sm:text-4xl lg:text-[2.75rem]"
           >
             Cómo trabajamos
           </h2>

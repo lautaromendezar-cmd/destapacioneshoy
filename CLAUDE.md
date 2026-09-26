@@ -157,6 +157,18 @@ referencia viva mientras el dominio siga en WordPress es
 `https://destapacioneshoy.com.ar`; la foto original está en
 `_rescate/hero-fondo-original.jpg`.
 
+**Las tipografías son las del cliente: Inter Tight en títulos, Inter en el
+cuerpo.** El sitio usaba Archivo, y era de lo que más hacía que no reconociera
+su propia página. Los `h1/h2/h3` toman `--font-titulos` desde `globals.css`, no
+hace falta ponerla por componente. Las imágenes OpenGraph usan las instancias
+estáticas de `assets/`: satori no interpola ejes variables, así que si se
+reemplazan por la variable los dos pesos salen iguales.
+
+**El encabezado va sobre el degradé oscuro, no sobre blanco.** En su WordPress
+la foto del hero arrancaba pegada a la barra de urgencia; un encabezado blanco
+parte el arranque en dos. Con el logo en su variante para fondo oscuro, el
+bloque de arriba vuelve a ser uno solo.
+
 **Los colores oscuros son los del cliente, no los del logo.** Las bandas de
 sección van en `banda` (`#152649`) y el pie en `pie` (`#070E1D`): son los que
 él pintaba en Elementor. El navy del logo (`#062F5E`) queda para tipografía,

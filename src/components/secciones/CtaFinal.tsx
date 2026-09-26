@@ -21,7 +21,7 @@ export function CtaFinal({
     >
       <div className="contenedor">
         <div className="max-w-2xl">
-          <h2 id="titulo-cta" className="text-3xl font-extrabold sm:text-4xl">
+          <h2 id="titulo-cta" className="text-3xl font-bold sm:text-4xl lg:text-[2.75rem]">
             {titulo}
           </h2>
           <p className="mt-3 text-lg leading-relaxed text-white/75">{texto}</p>

@@ -50,10 +50,10 @@ export function Galeria() {
       className="border-t border-borde bg-papel-tenue py-16 md:py-24"
     >
       <div className="contenedor">
-        <div className="max-w-2xl">
+        <div className="mx-auto max-w-2xl text-center">
           <h2
             id="titulo-galeria"
-            className="text-3xl font-extrabold text-navy sm:text-4xl"
+            className="text-3xl font-bold text-banda sm:text-4xl lg:text-[2.75rem]"
           >
             {galeria.titulo}
           </h2>

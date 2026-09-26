@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Archivo } from 'next/font/google'
+import { Inter, Inter_Tight } from 'next/font/google'
 import './globals.css'
 
 import { Encabezado } from '@/components/layout/Encabezado'
@@ -11,16 +11,25 @@ import { jsonLd, negocioJsonLd } from '@/lib/jsonld'
 import { sitio } from '@contenido'
 
 /**
- * Archivo, de Omnibus-Type (fundición argentina). Una sola familia para todo
- * el sitio: el contraste lo da el peso, no mezclar tipografías.
- * Se sirve desde nuestro dominio — cero request a fonts.googleapis.com.
+ * Las dos tipografías del WordPress del cliente: Inter Tight en los títulos e
+ * Inter en el cuerpo. Antes el sitio usaba Archivo, y era de lo que más hacía
+ * que no reconociera su propia página — el dibujo de la 'a' y de la 'g' es
+ * bien distinto al de Inter.
+ *
+ * Se sirven desde nuestro dominio: cero request a fonts.googleapis.com.
  */
-const archivo = Archivo({
+const interTight = Inter_Tight({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--fuente-archivo',
-  // El hero necesita 800; el cuerpo, 400. El resto son los intermedios en uso.
-  weight: ['400', '500', '600', '700', '800'],
+  variable: '--fuente-titulos',
+  weight: ['600', '700'],
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--fuente-cuerpo',
+  weight: ['400', '500', '600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -60,7 +69,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="es-AR" className={`${archivo.variable} h-full`}>
+    <html
+      lang="es-AR"
+      className={`${inter.variable} ${interTight.variable} h-full`}
+    >
       <body className="flex min-h-full flex-col antialiased">
         <EtiquetasNoScript />
 

@@ -174,7 +174,8 @@ export const sitio = {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 export const barraSuperior = {
-  texto: 'Urgencias 24 hs · CABA y Provincia',
+  /** El renglón que el cliente tenía arriba de todo, tal cual. */
+  texto: 'Urgencias las 24 hs – Atendemos CABA, Zona Norte, Zona Sur y Zona Oeste',
 }
 
 export const hero = {
@@ -188,10 +189,13 @@ export const hero = {
     blanco: 'Servicio de destapaciones',
     azul: '24 hs en CABA y Provincia',
   },
-  /** La línea de urgencia del sitio viejo, sin los emojis. */
+  /**
+   * Los dos renglones que iban debajo del título en su sitio, sin los emojis
+   * 🚨 y 📞. El segundo lleva el teléfono como enlace, igual que él lo tenía:
+   * en una urgencia, el número a la vista vale más que un sello de confianza.
+   */
   subtitulo: 'Urgencias las 24 hs, los 365 días del año.',
-  /** Tres pruebas cortas, arriba del botón. */
-  sellos: ['Sin roturas', 'Con garantía', 'Vamos hoy'],
+  antesDelTelefono: 'Llamá ahora:',
   botonLlamar: 'Llamar ahora',
   botonWhatsapp: 'Escribir por WhatsApp',
 }
@@ -412,6 +416,23 @@ export const servicios: Servicio[] = [
     },
   },
 ]
+
+/**
+ * El encabezado de la sección de servicios, con la redacción del sitio
+ * anterior del cliente. Su bloque era dos columnas: a la izquierda el título,
+ * este párrafo y la lista con tildes; a la derecha, una foto de un trabajo.
+ */
+export const introServicios = {
+  titulo: 'Servicios de destapaciones y desagotes',
+  texto:
+    'Atendemos todo tipo de destapaciones y desagotes, con máquinas profesionales y bombas centrífugas. Limpieza rápida, sin roturas y con garantía.',
+  imagen: {
+    src: '/images/tecnico-destapando-con-maquina.webp',
+    alt: 'Técnico de Destapaciones HOY operando una máquina de sonda para destapar el desagüe de un baño',
+    ancho: 1080,
+    alto: 1350,
+  } satisfies Imagen,
+}
 
 /* ═══════════════════════════════════════════════════════════════════════════
    ZONAS

@@ -37,9 +37,12 @@
   --color-borde: #dbe3ec;
   --color-grafito: #202424;
 
-  /* Tipografía: una sola familia, contraste por peso */
-  --font-sans: var(--fuente-archivo), ui-sans-serif, system-ui, -apple-system,
+  /* Tipografía: las dos familias del sitio anterior del cliente.
+     Inter Tight en los títulos, Inter en el cuerpo. */
+  --font-sans: var(--fuente-cuerpo), ui-sans-serif, system-ui, -apple-system,
     'Segoe UI', Roboto, Arial, sans-serif;
+  --font-titulos: var(--fuente-titulos), var(--fuente-cuerpo), ui-sans-serif,
+    system-ui, sans-serif;
 
   /* ── Colores heredados del WordPress del cliente ──────────────────────
      Sacados con el cuentagotas del sitio viejo, que sigue en línea, para que
@@ -78,6 +81,13 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-titulos);
+    letter-spacing: -0.02em;
   }
 
   body {

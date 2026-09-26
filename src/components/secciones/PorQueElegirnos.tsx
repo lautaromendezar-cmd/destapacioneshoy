@@ -19,7 +19,7 @@ export function PorQueElegirnos() {
         <div className="max-w-2xl">
           <h2
             id="titulo-elegirnos"
-            className="text-3xl font-extrabold sm:text-4xl"
+            className="text-3xl font-bold sm:text-4xl lg:text-[2.75rem]"
           >
             Por qué elegirnos
           </h2>
