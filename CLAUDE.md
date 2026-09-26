@@ -212,6 +212,21 @@ pantalla quedaba fuera de cuadro y lo que se veía era la caja de cartón.
 `Servicio.imagen` sigue siendo opcional: sin ella el encabezado va a una sola
 columna.
 
+**La video inspección tiene banda propia en la home.** El cliente pidió verla
+destacada y no como una séptima tarjeta de la grilla: es el único servicio que
+pidió agregar y el equipo se lo acaba de comprar. Va entre `Servicios` y
+`PorQueElegirnos`, en `papel-tenue` — los dos vecinos ya tienen fondo tomado
+(la grilla es blanca y "Por qué elegirnos" es la banda oscura) y tres fondos
+iguales seguidos borrarían el corte. En el HTML la foto va primero y se manda
+a la derecha con `md:order-2`: en mobile lo primero que se ve es el equipo,
+que es lo que el cliente quiere lucir, y en desktop el texto queda a la
+izquierda como en el resto del sitio.
+
+**Su foto es otra toma que la de la página del servicio, a propósito.** En la
+home se luce el equipo abierto con la pantalla; en la página del servicio, la
+escena de trabajo con la sonda entrando. Así se sostiene la regla de que
+ninguna foto se repite.
+
 **`Servicio.titulos` pisa los tres títulos de sección.** Los de fábrica
 —"Cómo te das cuenta", "Por qué se tapa", "Cómo lo resolvemos"— hablan de una
 obstrucción, y hay servicios que no destapan nada.

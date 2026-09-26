@@ -22,6 +22,7 @@ export type UbicacionCta =
   | 'barra-fija'
   | 'boton-flotante'
   | 'servicios'
+  | 'video-inspeccion'
   | 'por-que-elegirnos'
   | 'galeria'
   | 'zonas'
@@ -531,6 +532,38 @@ export const introServicios = {
       alto: 1280,
     },
   ] satisfies Imagen[],
+}
+
+/**
+ * Banda de la video inspección en la home.
+ *
+ * Es el único servicio que el cliente pidió agregar y el equipo se lo acaba
+ * de comprar: quiso verlo destacado en la home, no sólo como una tarjeta más
+ * de la grilla de servicios. Va con su propia banda para eso.
+ *
+ * El texto no va más allá de lo que él mismo describió por WhatsApp. No se
+ * promete entregar la grabación, que es lo primero que preguntaría un
+ * consorcio: eso todavía no está confirmado con él.
+ *
+ * La foto es otra toma que la de la página del servicio, a propósito: acá se
+ * luce el equipo abierto con la pantalla, allá la escena de trabajo.
+ */
+export const videoInspeccion = {
+  rotulo: 'Nuevo servicio',
+  titulo: 'Vemos el caño por dentro',
+  texto:
+    'Metemos una sonda con cámara por la cámara de inspección o por el desagüe que ya existe, y miramos el caño por dentro en la pantalla, en el momento y con vos al lado.',
+  puntos: [
+    'Qué es lo que está tapando y en qué punto exacto del caño está.',
+    'Si el caño está partido, hundido o tiene raíces metidas.',
+    'Si conviene destapar o si hay que reparar, y dónde exactamente.',
+  ],
+  imagen: {
+    src: '/images/video-inspeccion-equipo-abierto.webp',
+    alt: 'Equipo de video inspección abierto, con la pantalla mostrando el interior de un caño cloacal y el carrete de la sonda',
+    ancho: 1100,
+    alto: 1467,
+  } satisfies Imagen,
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════

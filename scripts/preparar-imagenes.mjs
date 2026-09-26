@@ -40,6 +40,10 @@ const fotos = [
   // Fotos propias del cliente con el equipo de video inspección (WhatsApp,
   // 26-sep-2026). Reemplazan a la del aviso de venta, que no era suya.
   ['video-inspeccion-trabajando.jpg', 'video-inspeccion-canerias-en-boca-de-registro', 1100, 74],
+  // La de la home es otra toma a propósito: en la home se luce el equipo
+  // abierto con la pantalla, y en la página del servicio, la escena de
+  // trabajo. Ninguna foto se repite entre las dos.
+  ['video-inspeccion-pantalla.jpg', 'video-inspeccion-equipo-abierto', 1100, 74],
 ]
 
 for (const [origen, destino, ancho, calidad] of fotos) {

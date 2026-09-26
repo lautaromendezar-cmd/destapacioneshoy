@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Hero } from '@/components/secciones/Hero'
 import { Servicios } from '@/components/secciones/Servicios'
+import { VideoInspeccion } from '@/components/secciones/VideoInspeccion'
 import { PorQueElegirnos } from '@/components/secciones/PorQueElegirnos'
 import { Galeria } from '@/components/secciones/Galeria'
 import { Zonas } from '@/components/secciones/Zonas'
@@ -31,6 +32,7 @@ export default function Home() {
 
       <Hero />
       <Servicios />
+      <VideoInspeccion />
       <PorQueElegirnos />
       <Galeria />
       <Zonas />
