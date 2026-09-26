@@ -16,7 +16,7 @@ export function PorQueElegirnos() {
       className="sobre-oscuro bg-banda py-16 text-white md:py-24"
     >
       <div className="contenedor">
-        <div className="max-w-2xl">
+        <div className="aparece max-w-2xl">
           <h2
             id="titulo-elegirnos"
             className="text-3xl font-bold sm:text-4xl lg:text-[2.75rem]"

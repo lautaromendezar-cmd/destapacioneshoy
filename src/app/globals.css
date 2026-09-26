@@ -58,6 +58,10 @@
 
   /* Alto de la barra fija de mobile, para reservar espacio abajo */
   --espacio-barra-fija: 4.5rem;
+
+  /* Curva de todo lo que se mueve. Sale rápido y frena largo: da peso sin
+     que nada parezca elástico. */
+  --curva: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -65,6 +69,20 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 
 @layer base {
+  /* Alto de la barra de urgencia. Medido: dos renglones abajo de 768px, uno
+     arriba. Se fija acá para poder restarlo del hero y que la primera
+     pantalla dé exactamente el viewport. Si se toca el texto de la barra,
+     hay que volver a medirlo. */
+  :root {
+    --alto-barra-urgencia: 3.25rem;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --alto-barra-urgencia: 2rem;
+    }
+  }
+
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
@@ -155,14 +173,40 @@
     @supports (animation-timeline: view()) {
       animation: aparecer linear both;
       animation-timeline: view();
-      animation-range: entry 0% entry 60%;
+      animation-range: entry 0% entry 55%;
     }
   }
 }
 
 @keyframes aparecer {
   from {
-    transform: translateY(12px);
+    transform: translateY(20px) scale(0.985);
+  }
+  to {
+    transform: none;
+  }
+}
+
+/* Entrada del hero, al cargar.
+ *
+ * Es por tiempo y no por scroll, así que no corre el riesgo de la animación
+ * de arriba: un keyframe por tiempo SIEMPRE termina. Aun así mueve sólo el
+ * transform, por dos motivos: el elemento que entra desde arriba es el H1, y
+ * revelar con opacidad ata el LCP al final de la animación; y si algo la
+ * interrumpe, lo peor que pasa es que un bloque quede corrido.
+ *
+ * El escalonado sale de --paso, que cada elemento fija con una clase.
+ */
+@utility entra {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: entrando 0.75s var(--curva) both;
+    animation-delay: calc(var(--paso, 0) * 90ms);
+  }
+}
+
+@keyframes entrando {
+  from {
+    transform: translateY(22px);
   }
   to {
     transform: none;

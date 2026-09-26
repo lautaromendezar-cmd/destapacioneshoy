@@ -426,12 +426,24 @@ export const introServicios = {
   titulo: 'Servicios de destapaciones y desagotes',
   texto:
     'Atendemos todo tipo de destapaciones y desagotes, con máquinas profesionales y bombas centrífugas. Limpieza rápida, sin roturas y con garantía.',
-  imagen: {
-    src: '/images/tecnico-destapando-con-maquina.webp',
-    alt: 'Técnico de Destapaciones HOY operando una máquina de sonda para destapar el desagüe de un baño',
-    ancho: 1080,
-    alto: 1350,
-  } satisfies Imagen,
+  /**
+   * Dos fotos, no una: su bloque era un collage de dos trabajos superpuestos.
+   * Ninguna de las dos se repite en la galería de más abajo.
+   */
+  imagenes: [
+    {
+      src: '/images/tecnico-destapando-con-maquina.webp',
+      alt: 'Técnico de Destapaciones HOY operando una máquina de sonda para destapar el desagüe de un baño',
+      ancho: 1080,
+      alto: 1350,
+    },
+    {
+      src: '/images/desague-bano-destapado.webp',
+      alt: 'Desagüe de baño destapado y limpio después del trabajo',
+      ancho: 720,
+      alto: 1280,
+    },
+  ] satisfies Imagen[],
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -782,18 +794,6 @@ export const galeria = {
       alt: 'Máquina destapadora de sonda eléctrica trabajando en el desagüe de una cocina',
       ancho: 720,
       alto: 1280,
-    },
-    {
-      src: '/images/desague-bano-destapado.webp',
-      alt: 'Desagüe de baño destapado tras retirar la obstrucción',
-      ancho: 720,
-      alto: 1280,
-    },
-    {
-      src: '/images/tecnico-destapando-con-maquina.webp',
-      alt: 'Técnico de Destapaciones HOY operando la máquina de sonda en un baño',
-      ancho: 1080,
-      alto: 1920,
     },
   ] satisfies Imagen[],
 }

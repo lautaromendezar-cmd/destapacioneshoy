@@ -58,7 +58,7 @@ export function Zonas() {
       />
 
       <div className="contenedor relative">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="aparece mx-auto max-w-3xl text-center">
           <p className="text-sm font-semibold tracking-widest text-azul-titulo uppercase">
             {bandaZonas.volanta}
           </p>
@@ -109,7 +109,7 @@ export function Zonas() {
             <li key={zona.slug} className="aparece">
               <Link
                 href={rutas.zona(zona.slug)}
-                className="group flex h-full flex-col rounded-2xl border border-white/15 bg-white/[0.07] p-6 transition-colors hover:border-white/35 hover:bg-white/[0.12]"
+                className="group flex h-full flex-col rounded-2xl border border-white/15 bg-white/[0.07] p-6 transition-[transform,border-color,background-color] duration-300 ease-[var(--curva)] hover:-translate-y-1 hover:border-white/35 hover:bg-white/[0.12]"
               >
                 <div className="flex items-center gap-2.5">
                   <MapPin

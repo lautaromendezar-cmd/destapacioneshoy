@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { Phone } from 'lucide-react'
 import { HeroFondo } from '@/components/secciones/HeroFondo'
 import { BotonLlamar, BotonWhatsapp } from '@/components/ui/Botones'
@@ -9,7 +10,7 @@ import { hero, sitio } from '@contenido'
  *
  * La decisión de fondo: cuando abra el sitio nuevo tiene que reconocer el
  * suyo, no encontrarse con otra página. Se conserva la geometría entera —
- * 900px de alto en desktop, la foto a sangre, el velo oscuro, el título
+ * la foto a sangre, el velo oscuro, el título
  * centrado partido en blanco y azul, los dos renglones de abajo con el
  * teléfono como enlace, los dos botones en degradé y el corte en diagonal.
  *
@@ -23,6 +24,15 @@ import { hero, sitio } from '@contenido'
  *   - la foto la servía WordPress en un solo JPG de 611 KB para todas las
  *     pantallas; ahora son dos encuadres en WebP, 25 KB en mobile.
  *
+ * El alto es la pantalla entera menos la barra de urgencia, que es lo único
+ * que queda arriba: `100svh` y no `100dvh` a propósito — con `dvh` el hero
+ * cambia de alto mientras el navegador del celular esconde la barra de
+ * direcciones, y el bloque de botones se mueve bajo el pulgar. Con `svh` se
+ * queda quieto y los botones nunca quedan tapados.
+ *
+ * La entrada es escalonada, como los fadeIn de Elementor que él tenía, pero
+ * moviendo sólo el transform: ver el comentario de `entra` en globals.css.
+ *
  * Lo único que se perdió del original es el zoom por scroll del fondo, que en
  * mobile costaba más de lo que sumaba.
  */
@@ -30,7 +40,7 @@ export function Hero() {
   return (
     <section
       id="hero-home"
-      className="sobre-oscuro relative isolate flex min-h-[34rem] items-center overflow-hidden bg-navy-900 text-white sm:min-h-[44rem] md:min-h-[56.25rem]"
+      className="sobre-oscuro relative isolate flex min-h-[calc(100svh-var(--alto-barra-urgencia))] items-center overflow-hidden bg-navy-900 text-white"
     >
       <HeroFondo />
 
@@ -47,16 +57,24 @@ export function Hero() {
 
       <div className="contenedor relative w-full">
         <div className="mx-auto max-w-3xl pb-10 text-center">
-          <h1 className="text-[2.15rem] leading-[1.14] font-semibold tracking-[-0.02em] text-balance sm:text-5xl lg:text-[3.875rem]">
+          <h1 className="entra text-[2.15rem] leading-[1.14] font-semibold tracking-[-0.02em] text-balance sm:text-5xl lg:text-[3.875rem]">
             <span className="block">{hero.h1.blanco}</span>
             <span className="text-azul-titulo block">{hero.h1.azul}</span>
           </h1>
 
-          <p className="mt-6 text-base font-bold sm:text-lg">{hero.subtitulo}</p>
+          <p
+            className="entra mt-6 text-base font-bold sm:text-lg"
+            style={{ '--paso': 1 } as CSSProperties}
+          >
+            {hero.subtitulo}
+          </p>
 
           {/* El renglón del teléfono que él tenía. El número es el enlace, y
               va medido como cualquier otro CTA. */}
-          <p className="mt-1.5 flex items-center justify-center gap-2 text-base font-bold sm:text-lg">
+          <p
+            className="entra mt-1.5 flex items-center justify-center gap-2 text-base font-bold sm:text-lg"
+            style={{ '--paso': 2 } as CSSProperties}
+          >
             <Phone
               className="size-4 shrink-0"
               strokeWidth={2.5}
@@ -75,7 +93,10 @@ export function Hero() {
           {/* WhatsApp primero, como en su sitio. El segundo botón era "Más
               información" y bajaba a un ancla; acá llama, que es la conversión
               que paga el Google Ads. */}
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <div
+            className="entra mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+            style={{ '--paso': 3 } as CSSProperties}
+          >
             <BotonWhatsapp
               ubicacion="hero"
               etiqueta={hero.botonWhatsapp}

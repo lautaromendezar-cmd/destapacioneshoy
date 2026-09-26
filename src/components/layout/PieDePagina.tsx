@@ -35,13 +35,15 @@ export function PieDePagina() {
             </p>
           </div>
 
-          <nav aria-labelledby="pie-servicios">
-            <h2
-              id="pie-servicios"
-              className="text-xs font-bold uppercase tracking-widest text-white/50"
-            >
+          {/* Los rótulos del pie son <p>, no <h2>. Como encabezados aparecían
+              en el esquema de las diez páginas —"SERVICIOS", "ZONAS",
+              "CONTACTO"— compitiendo con los títulos reales de cada página sin
+              aportar nada. El lector de pantalla sigue anunciando la sección
+              por el aria-label del <nav>. */}
+          <nav aria-label="Servicios">
+            <p className="text-xs font-bold tracking-widest text-white/50 uppercase">
               Servicios
-            </h2>
+            </p>
             <ul className="mt-4 space-y-2.5">
               {servicios.map((servicio) => (
                 <li key={servicio.slug}>
@@ -56,13 +58,10 @@ export function PieDePagina() {
             </ul>
           </nav>
 
-          <nav aria-labelledby="pie-zonas">
-            <h2
-              id="pie-zonas"
-              className="text-xs font-bold uppercase tracking-widest text-white/50"
-            >
+          <nav aria-label="Zonas de cobertura">
+            <p className="text-xs font-bold tracking-widest text-white/50 uppercase">
               Zonas
-            </h2>
+            </p>
             <ul className="mt-4 space-y-2.5">
               {zonas.map((zona) => (
                 <li key={zona.slug}>
@@ -79,9 +78,9 @@ export function PieDePagina() {
           </nav>
 
           <div>
-            <h2 className="text-xs font-bold uppercase tracking-widest text-white/50">
+            <p className="text-xs font-bold tracking-widest text-white/50 uppercase">
               Contacto
-            </h2>
+            </p>
             <div className="mt-4 space-y-3">
               <a
                 href={linkTelefono}

@@ -50,7 +50,7 @@ export function Galeria() {
       className="border-t border-borde bg-papel-tenue py-16 md:py-24"
     >
       <div className="contenedor">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="aparece mx-auto max-w-2xl text-center">
           <h2
             id="titulo-galeria"
             className="text-3xl font-bold text-banda sm:text-4xl lg:text-[2.75rem]"
@@ -62,7 +62,7 @@ export function Galeria() {
           </p>
         </div>
 
-        <ul className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
+        <ul className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
           {galeria.fotos.map((f, i) => (
             <li key={f.src} className="aparece">
               <button
@@ -77,7 +77,7 @@ export function Galeria() {
                   width={f.ancho}
                   height={f.alto}
                   loading="lazy"
-                  sizes="(min-width: 640px) 22rem, 45vw"
+                  sizes="(min-width: 640px) 17rem, 45vw"
                   className="aspect-4/3 w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
                 />
               </button>

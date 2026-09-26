@@ -26,18 +26,18 @@ export function Faq({
       <div className="contenedor">
         <h2
           id="titulo-faq"
-          className="max-w-2xl text-3xl font-bold text-banda sm:text-4xl lg:text-[2.75rem]"
+          className="aparece max-w-2xl text-3xl font-bold text-banda sm:text-4xl lg:text-[2.75rem]"
         >
           {titulo}
         </h2>
 
         <div className="mt-8 max-w-3xl divide-y divide-borde border-y border-borde">
           {preguntas.map((faq) => (
-            <details key={faq.pregunta} name="faq" className="group">
-              <summary className="flex cursor-pointer list-none items-start justify-between gap-4 py-5 text-left font-semibold text-navy marker:content-none [&::-webkit-details-marker]:hidden">
+            <details key={faq.pregunta} name="faq" className="aparece group">
+              <summary className="flex cursor-pointer list-none items-start justify-between gap-4 py-5 text-left font-semibold text-banda transition-colors duration-200 marker:content-none hover:text-acento [&::-webkit-details-marker]:hidden">
                 <span className="text-lg">{faq.pregunta}</span>
                 <Plus
-                  className="mt-1 size-5 shrink-0 text-acento transition-transform duration-200 group-open:rotate-45"
+                  className="mt-1 size-5 shrink-0 text-acento transition-transform duration-300 ease-[var(--curva)] group-open:rotate-45"
                   strokeWidth={2.5}
                   aria-hidden="true"
                 />

@@ -7,7 +7,7 @@ export function Pasos() {
       className="border-t border-borde bg-papel-tenue py-16 md:py-24"
     >
       <div className="contenedor">
-        <div className="max-w-2xl">
+        <div className="aparece max-w-2xl">
           <h2
             id="titulo-pasos"
             className="text-3xl font-bold text-banda sm:text-4xl lg:text-[2.75rem]"

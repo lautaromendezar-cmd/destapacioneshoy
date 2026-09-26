@@ -23,8 +23,8 @@ export function Servicios() {
       className="bg-white py-16 md:py-24"
     >
       <div className="contenedor">
-        <div className="grid items-center gap-10 md:grid-cols-[1.05fr_0.95fr] md:gap-14">
-          <div>
+        <div className="grid items-center gap-10 pb-4 md:grid-cols-[1.05fr_0.95fr] md:gap-16 md:pb-8">
+          <div className="aparece">
             <h2
               id="titulo-servicios"
               className="text-3xl font-bold text-banda sm:text-4xl lg:text-[2.75rem]"
@@ -52,16 +52,33 @@ export function Servicios() {
             </ul>
           </div>
 
-          <div className="overflow-hidden rounded-2xl">
-            <Image
-              src={introServicios.imagen.src}
-              alt={introServicios.imagen.alt}
-              width={introServicios.imagen.ancho}
-              height={introServicios.imagen.alto}
-              loading="lazy"
-              sizes="(min-width: 768px) 32rem, 100vw"
-              className="aspect-4/5 w-full object-cover object-top"
-            />
+          {/* Las dos fotos superpuestas de su bloque. La chica se monta sobre
+              la grande y sale del recuadro; en mobile se apilan en fila para
+              no achicar ninguna de las dos hasta lo ilegible. */}
+          <div className="aparece relative">
+            <div className="overflow-hidden rounded-2xl shadow-xl shadow-banda/10">
+              <Image
+                src={introServicios.imagenes[0].src}
+                alt={introServicios.imagenes[0].alt}
+                width={introServicios.imagenes[0].ancho}
+                height={introServicios.imagenes[0].alto}
+                loading="lazy"
+                sizes="(min-width: 768px) 30rem, 100vw"
+                className="aspect-4/5 w-full object-cover object-top"
+              />
+            </div>
+
+            <div className="mt-4 w-2/3 overflow-hidden rounded-2xl shadow-xl shadow-banda/15 ring-4 ring-white sm:absolute sm:-bottom-10 sm:-left-14 sm:mt-0 sm:w-[42%]">
+              <Image
+                src={introServicios.imagenes[1].src}
+                alt={introServicios.imagenes[1].alt}
+                width={introServicios.imagenes[1].ancho}
+                height={introServicios.imagenes[1].alto}
+                loading="lazy"
+                sizes="(min-width: 768px) 14rem, 60vw"
+                className="aspect-square w-full object-cover"
+              />
+            </div>
           </div>
         </div>
 
@@ -70,7 +87,7 @@ export function Servicios() {
             <li key={servicio.slug} className="aparece">
               <Link
                 href={rutas.servicio(servicio.slug)}
-                className="group flex h-full flex-col rounded-2xl border border-borde bg-white p-6 transition-colors hover:border-acento hover:bg-acento-tenue/40"
+                className="group flex h-full flex-col rounded-2xl border border-borde bg-white p-6 transition-[transform,border-color,background-color,box-shadow] duration-300 ease-[var(--curva)] hover:-translate-y-1 hover:border-acento hover:bg-acento-tenue/40 hover:shadow-lg hover:shadow-banda/10"
               >
                 <span className="inline-flex size-12 items-center justify-center rounded-xl bg-tilde text-white">
                   <Icono nombre={servicio.icono} className="size-6" />

@@ -21,7 +21,7 @@ export function Encabezado() {
   return (
     <header className="relative z-40">
       <div className="sobre-oscuro degrade-barra text-white">
-        <div className="contenedor flex items-center justify-center py-1.5">
+        <div className="contenedor flex min-h-[var(--alto-barra-urgencia)] items-center justify-center py-1.5">
           <p className="text-[13px] font-medium tracking-wide">
             {barraSuperior.texto}
           </p>

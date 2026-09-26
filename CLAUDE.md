@@ -171,6 +171,27 @@ una sola vez en el layout y no sabe qué página tiene debajo. En las páginas
 internas se queda en el flujo, sobre el degradé oscuro, con el logo en su
 variante para fondo oscuro.
 
+**El hero mide `100svh` menos la barra de urgencia, y `svh` no es `dvh`.** Con
+`dvh` el hero cambia de alto mientras el navegador del celular esconde la barra
+de direcciones y el bloque de botones se mueve bajo el pulgar. El alto de la
+barra vive en `--alto-barra-urgencia` (dos renglones abajo de 768px, uno
+arriba): si se cambia ese texto, hay que volver a medirlo.
+
+**Nada anima la opacidad, tampoco la entrada del hero.** `aparece` es scroll
+(`animation-timeline: view()`) y el motivo está al lado del código. `entra` es
+por tiempo y ahí un keyframe siempre termina, pero igual mueve sólo el
+transform: el LCP es la foto del hero y revelar con opacidad lo ataría al final
+de la animación. Medido en mobile con CPU a 1/4 y red lenta: 1108 ms de
+mediana. El escalonado sale de `--paso`, que cada elemento fija inline.
+
+**Los rótulos del pie son `<p>`, no `<h2>`.** Como encabezados aparecían en el
+esquema de las diez páginas —"SERVICIOS", "ZONAS", "CONTACTO"— compitiendo con
+los títulos reales sin aportar nada. El `<nav>` los anuncia por `aria-label`.
+
+**Ninguna foto se repite en la home.** Las dos del collage de servicios no
+están en la galería, y la galería quedó con cuatro en una sola fila, que es la
+franja que él tenía.
+
 **El corte en diagonal del hero lleva `-scale-y-100` y no es decorativo.**
 Elementor da vuelta la figura por CSS. Sin eso el relleno queda arriba y lo que
 se ve es una hilacha blanca metida dentro de la foto, no un corte abajo.
