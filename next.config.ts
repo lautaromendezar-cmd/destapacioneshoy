@@ -28,17 +28,28 @@ const rutasViejasDeWordPress = [
   '/2026/:path*',
   '/index.php',
   '/index.php/:path*',
+  // Las fotos del WordPress vivían acá y algunas están en Google Imágenes.
+  // El sitio nuevo sirve las suyas desde /images: esto evita el 404.
+  '/wp-content/:path*',
+  '/wp-includes/:path*',
 ]
 
 /**
- * Mientras el sitio no esté aprobado y el dominio siga apuntando al WordPress
- * viejo, este deploy NO se indexa: duplicaría el sitio que está en vivo y
- * todavía hay datos sin confirmar con el cliente (garantía, costo de la
- * visita, plazos).
+ * El sitio se indexa SÓLO en el dominio propio.
  *
- * PARA SALIR EN VIVO: poner esto en false y volver a publicar.
+ * Antes esto era un booleano que había que dar vuelta a mano el día de la
+ * mudanza. El problema es que el mismo contenido se sirve en tres lados —
+ * destapacioneshoy.com.ar, destapacioneshoy.vercel.app y la URL de cada
+ * deploy— y sacar el bloqueo global dejaba a los .vercel.app compitiendo
+ * contra el sitio real en Google, que es el duplicado clásico de una
+ * migración.
+ *
+ * Con la regla por host no hay que tocar nada el día del cambio: mientras el
+ * DNS siga en el WordPress, nadie ve esta versión bajo el dominio y todo lo
+ * que se sirve va con noindex; cuando el dominio apunte acá, el .com.ar pasa
+ * a indexarse solo y los .vercel.app siguen bloqueados para siempre.
  */
-const BLOQUEAR_INDEXACION = true
+const DOMINIO_PUBLICO = '(www\.)?destapacioneshoy\.com\.ar'
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -77,12 +88,11 @@ const nextConfig: NextConfig = {
 
   async headers() {
     return [
-      ...(BLOQUEAR_INDEXACION
-        ? [{
-            source: '/:path*',
-            headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
-          }]
-        : []),
+      {
+        source: '/:path*',
+        missing: [{ type: 'host' as const, value: DOMINIO_PUBLICO }],
+        headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+      },
       {
         source: '/:path*',
         headers: [
