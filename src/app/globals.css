@@ -48,6 +48,10 @@
      con texto blanco dan 1.98:1 y 2.87:1 y son ilegibles. Se bajó el punto
      final hasta que el tramo más claro pasa 4.5:1, sin cambiar el tono. */
   --color-azul-titulo: #90b5ff; /* el 2º renglón del H1 del sitio viejo */
+  --color-banda: #152649; /* el fondo de sus secciones oscuras */
+  --color-banda-fuerte: #0e1b36; /* el mismo, un escalón más abajo */
+  --color-pie: #070e1d; /* el pie, casi negro */
+  --color-tilde: #062179; /* el relleno de sus tildes en círculo */
 
   /* Alto de la barra fija de mobile, para reservar espacio abajo */
   --espacio-barra-fija: 4.5rem;

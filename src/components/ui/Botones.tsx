@@ -31,7 +31,7 @@ export function BotonLlamar({
   className = '',
   conNumero = true,
   etiqueta,
-  variante = 'lleno',
+  variante = 'degrade',
 }: {
   ubicacion: UbicacionCta
   tamano?: Tamano
@@ -39,7 +39,11 @@ export function BotonLlamar({
   /** Mostrar el número además del texto. En el hero conviene que se vea. */
   conNumero?: boolean
   etiqueta?: string
-  /** 'degrade' = el botón azul del hero anterior del cliente. */
+  /**
+   * 'degrade' es el botón azul que el cliente tenía en todo su sitio y es el
+   * que va por defecto. 'lleno' queda para donde el degradé no entra: la
+   * barra fija de mobile, que mide 56px y se vería sucia.
+   */
   variante?: 'lleno' | 'degrade'
 }) {
   const estilo =
@@ -79,7 +83,7 @@ export function BotonWhatsapp({
   className = '',
   mensaje,
   etiqueta = 'WhatsApp',
-  variante = 'contorno',
+  variante = 'degrade',
 }: {
   ubicacion: UbicacionCta
   tamano?: Tamano
@@ -87,7 +91,11 @@ export function BotonWhatsapp({
   /** Mensaje precargado. Por defecto, el genérico. */
   mensaje?: string
   etiqueta?: string
-  /** 'degrade' = el botón verde del hero anterior del cliente. */
+  /**
+   * 'degrade' es el verde del cliente y va por defecto. 'contorno' queda para
+   * fondos claros donde el verde lleno pesa demasiado al lado del botón de
+   * llamar, y 'lleno' para la barra fija.
+   */
   variante?: 'contorno' | 'lleno' | 'degrade'
 }) {
   const estilo =

@@ -27,6 +27,17 @@ const T = {
   papelTenue: '#f4f7fb',
   borde: '#dbe3ec',
   blanco: '#ffffff',
+
+  // Heredados del WordPress del cliente (ver globals.css)
+  banda: '#152649',
+  bandaFuerte: '#0e1b36',
+  pie: '#070e1d',
+  azulTitulo: '#90b5ff',
+  tilde: '#062179',
+  // Los extremos más claros de los dos degradés de botón: son el peor caso
+  // de cada uno, porque el arranque es mucho más oscuro.
+  degradeAzulClaro: '#2c6e9b',
+  degradeVerdeClaro: '#0c8654',
 }
 
 const canal = (v) => {
@@ -71,7 +82,25 @@ const pares = [
   ['Acento claro sobre navy 900', T.acentoClaro, T.navy900, 4.5],
   ['Acento claro sobre navy', T.acentoClaro, T.navy, 4.5],
 
+  // ── Texto sobre las superficies heredadas del cliente ───────────────────
+  ['Blanco sobre la banda oscura', T.blanco, T.banda, 4.5],
+  ['Blanco 75% sobre la banda oscura', '#c9ced8', T.banda, 4.5],
+  ['Azul del título sobre la banda oscura', T.azulTitulo, T.banda, 4.5],
+  ['Blanco sobre el pie', T.blanco, T.pie, 4.5],
+  ['Blanco 70% sobre el pie', '#b6b9c0', T.pie, 4.5],
+  ['Acento claro sobre el pie', T.acentoClaro, T.pie, 4.5],
+  // La banda de zonas lleva la foto bajo un velo del 80%: el píxel más claro
+  // posible (blanco puro) mezclado con bandaFuerte da este fondo.
+  ['Blanco sobre la banda de zonas, peor píxel', T.blanco, '#414a5e', 4.5],
+  ['Azul del título sobre la banda de zonas, peor píxel', T.azulTitulo, '#414a5e', 3],
+  ['Blanco sobre el hero, peor píxel', T.blanco, '#3f3f3f', 4.5],
+  ['Azul del título sobre el hero, peor píxel', T.azulTitulo, '#3f3f3f', 3],
+
   // ── Botones (texto) ─────────────────────────────────────────────────────
+  ['Botón degradé azul: blanco sobre su punto más claro', T.blanco, T.degradeAzulClaro, 4.5],
+  ['Botón degradé verde: blanco sobre su punto más claro', T.blanco, T.degradeVerdeClaro, 4.5],
+  ['Tilde en círculo sobre papel', T.tilde, T.papel, 3],
+  ['Tilde en círculo sobre papel tenue', T.tilde, T.papelTenue, 3],
   ['Botón llamar: blanco sobre acento', T.blanco, T.acento, 4.5],
   ['Botón llamar hover: blanco sobre acento fuerte', T.blanco, T.acentoFuerte, 4.5],
   ['Botón WhatsApp: blanco sobre wa', T.blanco, T.wa, 4.5],

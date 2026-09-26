@@ -1,5 +1,5 @@
-import { Check } from 'lucide-react'
 import { HeroFondo } from '@/components/secciones/HeroFondo'
+import { TildeCirculo } from '@/components/ui/Icono'
 import { BotonLlamar, BotonWhatsapp } from '@/components/ui/Botones'
 import { hero } from '@contenido'
 
@@ -57,11 +57,7 @@ export function Hero() {
                 key={sello}
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-white"
               >
-                <Check
-                  className="text-azul-titulo size-4 shrink-0"
-                  strokeWidth={3}
-                  aria-hidden="true"
-                />
+                <TildeCirculo className="text-azul-titulo size-4" />
                 {sello}
               </li>
             ))}

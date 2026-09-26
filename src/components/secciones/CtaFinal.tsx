@@ -17,7 +17,7 @@ export function CtaFinal({
   return (
     <section
       aria-labelledby="titulo-cta"
-      className="sobre-oscuro bg-navy py-16 text-white md:py-20"
+      className="sobre-oscuro bg-banda py-16 text-white md:py-20"
     >
       <div className="contenedor">
         <div className="max-w-2xl">

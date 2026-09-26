@@ -14,7 +14,7 @@ export function PieDePagina() {
   const anio = new Date().getFullYear()
 
   return (
-    <footer className="sobre-oscuro bg-navy-900 text-white">
+    <footer className="sobre-oscuro bg-pie text-white">
       <div className="contenedor py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">

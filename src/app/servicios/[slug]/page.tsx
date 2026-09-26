@@ -136,7 +136,7 @@ export default async function PaginaServicio({
       </section>
 
       {/* ── Cómo lo resolvemos ──────────────────────────────────────────── */}
-      <section className="sobre-oscuro bg-navy-900 py-14 text-white md:py-20">
+      <section className="sobre-oscuro bg-banda py-14 text-white md:py-20">
         <div className="contenedor">
           <h2 className="max-w-2xl text-2xl font-extrabold sm:text-3xl">
             Cómo lo resolvemos

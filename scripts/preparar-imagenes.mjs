@@ -85,6 +85,24 @@ for (const [origen, destino, ancho, calidad] of fotos) {
   }
 }
 
+/**
+ * Fondo de la banda de zonas: la otra foto que el cliente ya tenía, la del
+ * guante con luz neón. Tiene un magenta muy fuerte, pero en su sitio va bajo
+ * un velo oscuro y lo que se lee es una banda azul con un tinte violeta —
+ * que es exactamente lo que él reconoce. Se conserva tal cual.
+ */
+{
+  const origen = join(ORIGEN, 'banda-zonas-original.jpg')
+  for (const ancho of [768, 1152, 1408]) {
+    const salida = join(IMAGENES, `banda-zonas-${ancho}.webp`)
+    await sharp(origen)
+      .resize({ width: ancho, withoutEnlargement: true })
+      .webp({ quality: 66, effort: 6 })
+      .toFile(salida)
+    await registrar(salida)
+  }
+}
+
 /* ── 2. Logos ───────────────────────────────────────────────────────────── */
 
 // Sólo el logo a color: el "blanco" del cliente no se usa en el sitio (tiene

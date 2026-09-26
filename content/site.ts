@@ -579,6 +579,28 @@ export const zonaParaguas = {
   texto: 'Cubrimos el Gran Buenos Aires a través de Zona Norte, Oeste y Sur.',
 }
 
+/**
+ * La banda de cobertura del sitio anterior del cliente, palabra por palabra.
+ * Era su segunda sección más fuerte después del hero: fondo oscuro con foto,
+ * título centrado en blanco y las zonas separadas por barras. Se conserva.
+ */
+export const bandaZonas = {
+  volanta: 'Llegamos rápido a cualquier zona',
+  titulo: 'Atendemos Capital y toda la Provincia de Buenos Aires',
+  /** El renglón de zonas separadas por barras verticales. */
+  listado: [
+    'Capital Federal',
+    'Zona Norte',
+    'Zona Oeste',
+    'Zona Sur',
+    'Gran Buenos Aires',
+  ],
+  botonWhatsapp: 'Enviame un WhatsApp',
+  /** El pie de la banda, que lleva a las landings de cada zona. */
+  bajadaTarjetas:
+    'Entrá a tu zona para ver qué se tapa más seguido por ahí y por qué.',
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    POR QUÉ ELEGIRNOS
    ═══════════════════════════════════════════════════════════════════════════ */

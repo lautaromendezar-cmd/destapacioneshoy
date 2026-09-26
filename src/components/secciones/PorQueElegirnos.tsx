@@ -5,12 +5,15 @@ import { diferenciales } from '@contenido'
 /**
  * Sección oscura: corta el ritmo de la página y hace que el bloque de
  * confianza se lea como una unidad, no como seis tarjetas más.
+ *
+ * El fondo es #152649, el mismo azul con el que el cliente pintaba sus
+ * bandas oscuras en Elementor. No es el navy del logo: es el que él ve.
  */
 export function PorQueElegirnos() {
   return (
     <section
       aria-labelledby="titulo-elegirnos"
-      className="sobre-oscuro bg-navy-900 py-16 text-white md:py-24"
+      className="sobre-oscuro bg-banda py-16 text-white md:py-24"
     >
       <div className="contenedor">
         <div className="max-w-2xl">

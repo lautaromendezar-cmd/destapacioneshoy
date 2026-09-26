@@ -115,7 +115,7 @@ export default async function PaginaZona({ params }: PageProps<'/zonas/[slug]'>)
       </section>
 
       {/* ── Localidades ─────────────────────────────────────────────────── */}
-      <section className="sobre-oscuro bg-navy-900 py-14 text-white md:py-20">
+      <section className="sobre-oscuro bg-banda py-14 text-white md:py-20">
         <div className="contenedor">
           <h2 className="text-2xl font-extrabold sm:text-3xl">
             Dónde llegamos en {zona.nombreEnFrase}

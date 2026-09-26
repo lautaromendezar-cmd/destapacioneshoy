@@ -157,6 +157,18 @@ referencia viva mientras el dominio siga en WordPress es
 `https://destapacioneshoy.com.ar`; la foto original está en
 `_rescate/hero-fondo-original.jpg`.
 
+**Los colores oscuros son los del cliente, no los del logo.** Las bandas de
+sección van en `banda` (`#152649`) y el pie en `pie` (`#070E1D`): son los que
+él pintaba en Elementor. El navy del logo (`#062F5E`) queda para tipografía,
+íconos y tarjetas. Las listas usan `TildeCirculo`, el tilde en círculo relleno
+con el que él listaba todo, en `tilde` (`#062179`). Los CTA van en degradé por
+defecto — `degrade-azul` y `degrade-wa`, los suyos — y las variantes planas
+quedan sólo para la barra fija de mobile.
+
+**La banda de zonas es suya, con su foto neón y todo.** Título centrado, zonas
+separadas por barras y botón verde. Lo agregado son las cuatro tarjetas que
+llevan a las landings: en su sitio ese renglón era texto sin links.
+
 **La foto del hero no pasa por `next/image`.** Es el único caso: en mobile se
 muestra un recorte vertical y en desktop uno apaisado — dos recortes distintos,
 o sea art direction, que se resuelve con `<picture>` + `<source media>`.
