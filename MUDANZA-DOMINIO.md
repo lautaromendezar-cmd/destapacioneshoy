@@ -102,16 +102,21 @@ no hay nada externo que haya que preservar.
 | Nombre                 | Tipo  | Valor                             |
 | ---------------------- | ----- | --------------------------------- |
 | `@`                    | A     | `200.58.112.98`                   |
+| `@`                    | AAAA  | `2800:6c0:2::1:8`                 |
 | `www`                  | CNAME | `destapacioneshoy.com.ar`         |
 | `mail`                 | A     | `200.58.112.98`                   |
 | `mx1`                  | A     | `200.58.122.206`                  |
 | `ftp`                  | A     | `200.58.112.98`                   |
+| `mail`                 | AAAA  | `2800:6c0:2::1:8`                 |
+| `ftp`                  | AAAA  | `2800:6c0:2::1:8`                 |
 | `autodiscover`         | CNAME | `destapacioneshoy.com.ar`         |
 | `autoconfig`           | CNAME | `destapacioneshoy.com.ar`         |
 | `@`                    | MX    | `0 mail.destapacioneshoy.com.ar`  |
 | `@`                    | MX    | `20 mx1.destapacioneshoy.com.ar`  |
 | `@`                    | TXT   | `v=spf1 include:comp.hostmar.com -all` |
 | `_dmarc`               | TXT   | `v=DMARC1; p=none`                |
+| `mail._domainkey`      | TXT   | DKIM, `v=DKIM1; g=*; k=rsa; p=MIIBIjANBgkq…` (clave completa en el DNS de Vercel) |
+| `@`                    | NS    | `ns3.hostmar.com`, `ns4.hostmar.com` |
 
 Con los nameservers en Vercel, el apex y el `www` los resuelve Vercel solo.
 El resto son registros de cPanel que no hay que recrear, **salvo los MX si el
