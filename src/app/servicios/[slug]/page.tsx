@@ -107,9 +107,8 @@ export default async function PaginaServicio({
               </div>
             </div>
 
-            {/* Sin foto el encabezado va a una sola columna. Preferible a
-                repetir la de otro servicio o a poner un marcador de posición:
-                ver el TODO de video-inspeccion-de-canerias en content/site.ts. */}
+            {/* Sin foto el encabezado va a una sola columna: preferible a
+                repetir la de otro servicio o a poner un marcador de posición. */}
             {servicio.imagen && (
               <div className="overflow-hidden rounded-2xl shadow-xl shadow-banda/10">
                 <Image
@@ -120,6 +119,7 @@ export default async function PaginaServicio({
                   priority
                   fetchPriority="high"
                   sizes="(min-width: 768px) 36rem, 100vw"
+                  style={servicio.imagen.encuadre ? { objectPosition: servicio.imagen.encuadre } : undefined}
                   className="aspect-4/3 w-full object-cover md:aspect-4/5"
                 />
               </div>

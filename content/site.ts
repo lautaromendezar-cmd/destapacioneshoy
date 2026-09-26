@@ -57,6 +57,12 @@ export interface Imagen {
   alt: string
   ancho: number
   alto: number
+  /**
+   * `object-position` para el recorte. El encabezado de servicio muestra la
+   * foto en 4:3 en mobile y 4:5 en desktop, así que una foto vertical pierde
+   * arriba y abajo: si lo importante no está en el centro, se corre acá.
+   */
+  encuadre?: string
 }
 
 export interface Servicio {
@@ -444,11 +450,15 @@ export const servicios: Servicio[] = [
     // sin la grabación en la mano no le sirve para reclamar ni para negociar.
     // TODO: confirmar con el cliente — ¿hasta qué diámetro de caño entra la
     // sonda? Sin ese dato no se puede decir si sirve para una columna montante.
-    // TODO: falta la foto del equipo. La que mandó por WhatsApp es la del
-    // aviso de venta, con los globos de "9 pulgadas" y "7mm" encima: no se
-    // puede publicar. Hace falta una foto del equipo suyo trabajando y, sobre
-    // todo, una captura de la pantalla con el caño por dentro — esa imagen es
-    // la que vende el servicio. Ver instrucciones en CLAUDE.md.
+    imagen: {
+      src: '/images/video-inspeccion-canerias-en-boca-de-registro.webp',
+      alt: 'Sonda con cámara entrando a una cámara de inspección mientras la pantalla del equipo muestra el interior del caño cloacal',
+      ancho: 1100,
+      alto: 1467,
+      // En 4:3 el centro deja la pantalla fuera de cuadro, y la pantalla con
+      // el caño por dentro es lo que muestra el servicio.
+      encuadre: '50% 22%',
+    },
   },
   {
     slug: 'desagote-de-sotanos-con-bomba',

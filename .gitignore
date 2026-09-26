@@ -47,4 +47,8 @@ next-env.d.ts
 /_rescate/home.html
 /_rescate/texto-home.txt
 
+# clips de WhatsApp del equipo de video inspección: 478x850 y movidos,
+# no se publican. Se guardan por si sirve un cuadro suelto.
+/_rescate/*.mp4
+
 .vercel

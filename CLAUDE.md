@@ -193,13 +193,24 @@ los títulos reales sin aportar nada. El `<nav>` los anuncia por `aria-label`.
 ver el interior de los caños cloacales, para ver la obstrucción que tienen y
 ver si están rotos". El texto de la página no va más allá de eso.
 
-**Esa página va sin foto a propósito.** La que mandó es la del aviso de venta
-del equipo, con los globos de "9 pulgadas" y "7mm" encima: no es suya y no se
-publica. `Servicio.imagen` es opcional y sin ella el encabezado va a una sola
-columna. Lo que hay que pedirle son dos cosas, y la segunda importa más que la
-primera: una foto del equipo suyo en un trabajo, y **una captura de la pantalla
-con el caño por dentro**. Esa captura es el servicio; el equipo cerrado en su
-valija no le dice nada a nadie.
+**La foto de esa página es suya, del 26-sep-2026.** La primera que mandó era
+la del aviso de venta del equipo, con los globos de "9 pulgadas" y "7mm"
+encima, y no se publicó. Después mandó cinco archivos propios; el elegido
+—`_rescate/video-inspeccion-trabajando.jpg`— es el único que muestra las dos
+cosas juntas: la sonda entrando a la cámara de inspección y, arriba, la
+pantalla con el caño por dentro. Esa pantalla es el servicio; el equipo cerrado
+en su valija no le dice nada a nadie. Las otras dos fotos quedan en `_rescate/`
+(`-pantalla`, el primer plano de la pantalla, y `-equipo`, otra toma de la
+escena) y los dos clips de WhatsApp también, ignorados por git: son 478x850 y
+movidos, no se publican.
+
+**Esa foto lleva `encuadre`.** El encabezado muestra la imagen en 4:3 en mobile
+y 4:5 en desktop, y una foto vertical centrada pierde arriba: en 4:3 la
+pantalla quedaba fuera de cuadro y lo que se veía era la caja de cartón.
+`Imagen.encuadre` es un `object-position` opcional —acá `50% 22%`— y es la
+única foto del sitio que lo necesita. Verificado con capturas en 390 y 1440.
+`Servicio.imagen` sigue siendo opcional: sin ella el encabezado va a una sola
+columna.
 
 **`Servicio.titulos` pisa los tres títulos de sección.** Los de fábrica
 —"Cómo te das cuenta", "Por qué se tapa", "Cómo lo resolvemos"— hablan de una

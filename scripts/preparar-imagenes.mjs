@@ -37,6 +37,9 @@ const fotos = [
   ['3bf11bdc-187a-4e06-b20e-2f3e3358141c.jpeg', 'boca-desagote-cloacal-destapada', 899, 74],
   ['ab7a004e-3944-4db4-96d4-09891ad5eca5.jpeg', 'rejillas-desagote-piso-destapadas', 1400, 74],
   ['1a0a1a1f-2f59-479d-8fdc-50438e1b2a7c.jpeg', 'desague-bano-destapado', 720, 74],
+  // Fotos propias del cliente con el equipo de video inspección (WhatsApp,
+  // 26-sep-2026). Reemplazan a la del aviso de venta, que no era suya.
+  ['video-inspeccion-trabajando.jpg', 'video-inspeccion-canerias-en-boca-de-registro', 1100, 74],
 ]
 
 for (const [origen, destino, ancho, calidad] of fotos) {
