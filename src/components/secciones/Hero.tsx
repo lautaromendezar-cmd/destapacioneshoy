@@ -28,7 +28,10 @@ import { hero, sitio } from '@contenido'
  */
 export function Hero() {
   return (
-    <section className="sobre-oscuro relative isolate flex min-h-[34rem] items-center overflow-hidden bg-navy-900 text-white sm:min-h-[44rem] md:min-h-[56.25rem]">
+    <section
+      id="hero-home"
+      className="sobre-oscuro relative isolate flex min-h-[34rem] items-center overflow-hidden bg-navy-900 text-white sm:min-h-[44rem] md:min-h-[56.25rem]"
+    >
       <HeroFondo />
 
       {/* El velo. En el original era un negro plano al 60%; acá son dos capas
@@ -88,11 +91,16 @@ export function Hero() {
         </div>
       </div>
 
-      {/* El corte en diagonal con el que cerraba el hero en Elementor. Es el
-          mismo path: sube de izquierda a derecha y se rellena con el color de
-          la sección siguiente. */}
+      {/* El corte en diagonal con el que cerraba el hero en Elementor: el
+          mismo path, relleno con el color de la sección siguiente.
+
+          El `-scale-y-100` no es decorativo. Elementor da vuelta la figura por
+          CSS, y sin eso el relleno queda ARRIBA: se ve una hilacha blanca
+          metida adentro de la foto en lugar de un corte limpio abajo. Medido
+          con el cuentagotas: a 200px del borde izquierdo aparecía una franja
+          blanca de 10px con foto oscura de los dos lados. */}
       <svg
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-[22px] w-full text-white sm:h-[38px]"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-[20px] w-full -scale-y-100 text-white sm:h-[34px]"
         viewBox="0 0 1000 100"
         preserveAspectRatio="none"
         aria-hidden="true"

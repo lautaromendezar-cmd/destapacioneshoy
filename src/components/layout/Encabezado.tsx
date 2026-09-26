@@ -11,15 +11,15 @@ import { datosCta, linkTelefono, rutas } from '@/lib/rutas'
  * de 360x640 el hero entero entre sin scrollear. Tampoco hay menú de
  * navegación: en una urgencia, un menú es una forma de perder la llamada.
  *
- * Los dos van sobre el mismo degradé oscuro del cliente. El encabezado era
- * blanco y cortaba la página en dos justo antes de la foto del hero, que en
- * su WordPress arrancaba pegada a la barra de urgencia. Así el arranque
- * vuelve a ser un solo bloque oscuro que entra en la foto — con el logo y el
- * teléfono, que él no tenía.
+ * En su WordPress la foto del hero arrancaba pegada a la barra de urgencia,
+ * sin nada en el medio. Por eso en la home la fila del logo NO ocupa lugar:
+ * flota sobre la foto (la regla está en globals.css, colgada de
+ * `body:has(#hero-home)`). En el resto de las páginas, donde abajo hay
+ * migas sobre fondo claro, se queda en su sitio sobre el degradé oscuro.
  */
 export function Encabezado() {
   return (
-    <header>
+    <header className="relative z-40">
       <div className="sobre-oscuro degrade-barra text-white">
         <div className="contenedor flex items-center justify-center py-1.5">
           <p className="text-[13px] font-medium tracking-wide">
@@ -28,7 +28,7 @@ export function Encabezado() {
         </div>
       </div>
 
-      <div className="sobre-oscuro degrade-barra">
+      <div className="fila-marca sobre-oscuro degrade-barra">
         <div className="contenedor flex items-center justify-between gap-4 py-3">
           <Link href={rutas.home} aria-label={`${sitio.nombre} — inicio`}>
             <Image

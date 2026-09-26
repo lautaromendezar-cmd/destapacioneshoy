@@ -199,3 +199,21 @@
 @utility degrade-barra {
   background-image: linear-gradient(57deg, #021a66 0%, #0f0d0d 100%);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LA FILA DEL LOGO FLOTA SOBRE EL HERO
+   ───────────────────────────────────────────────────────────────────────────
+   Sólo en la home, donde abajo hay una foto oscura a sangre. Sacarla del flujo
+   es lo que devuelve el arranque del sitio del cliente: barra de urgencia y
+   enseguida la foto, sin una banda en el medio.
+
+   Va con `:has()` porque el encabezado se arma una sola vez en el layout y no
+   sabe qué página está debajo. Si un navegador viejo no lo soporta, la fila
+   se queda en su lugar: se ve como antes, no se rompe nada.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+body:has(#hero-home) .fila-marca {
+  position: absolute;
+  inset-inline: 0;
+  background-image: none;
+}

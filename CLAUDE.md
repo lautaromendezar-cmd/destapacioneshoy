@@ -164,10 +164,16 @@ hace falta ponerla por componente. Las imágenes OpenGraph usan las instancias
 estáticas de `assets/`: satori no interpola ejes variables, así que si se
 reemplazan por la variable los dos pesos salen iguales.
 
-**El encabezado va sobre el degradé oscuro, no sobre blanco.** En su WordPress
-la foto del hero arrancaba pegada a la barra de urgencia; un encabezado blanco
-parte el arranque en dos. Con el logo en su variante para fondo oscuro, el
-bloque de arriba vuelve a ser uno solo.
+**En la home, la fila del logo flota sobre el hero.** En su WordPress la foto
+arrancaba pegada a la barra de urgencia, sin nada en el medio. La regla vive en
+`globals.css`, colgada de `body:has(#hero-home)`, porque el encabezado se arma
+una sola vez en el layout y no sabe qué página tiene debajo. En las páginas
+internas se queda en el flujo, sobre el degradé oscuro, con el logo en su
+variante para fondo oscuro.
+
+**El corte en diagonal del hero lleva `-scale-y-100` y no es decorativo.**
+Elementor da vuelta la figura por CSS. Sin eso el relleno queda arriba y lo que
+se ve es una hilacha blanca metida dentro de la foto, no un corte abajo.
 
 **Los colores oscuros son los del cliente, no los del logo.** Las bandas de
 sección van en `banda` (`#152649`) y el pie en `pie` (`#070E1D`): son los que
