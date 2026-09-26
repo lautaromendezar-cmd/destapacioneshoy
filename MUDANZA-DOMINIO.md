@@ -48,13 +48,30 @@ El orden importa: cada paso depende de que el anterior esté verificado.
    sea Production (sin redirect), y editar `www.destapacioneshoy.com.ar` para
    que redirija 308 a `destapacioneshoy.com.ar`.
 
-4. **Cambiar los nameservers a Vercel**, en el panel de DonWeb o en NIC.ar
-   (no en HostMar: ahí sólo está la zona delegada):
+4. **Los nameservers, por ahora, se quedan en HostMar.** La vinculación se
+   hizo cambiando el **registro A** del apex a `216.150.1.1` dentro de esa
+   zona, y funciona: el sitio está en vivo en el dominio desde el 26-sep-2026.
+
+   Decisión de Lautaro: cuando el hosting muera y DonWeb borre la zona,
+   rehace la configuración —es un minuto de trabajo— en vez de mover los
+   nameservers ahora.
+
+   Lo que hay que tener presente si se elige ese camino: **entre que la zona
+   se borra y alguien lo nota, el dominio no resuelve**. No es que el sitio
+   siga en pie esperando el arreglo: deja de existir para todo el mundo, y
+   éste es un negocio de urgencias que vive del teléfono y de Google Ads.
+   Conviene mirar el dominio el día que se dé de baja el hosting, no después.
+
+   Si en algún momento se prefiere cerrarlo de una vez, es cambiar los
+   nameservers en DonWeb o NIC.ar por estos dos:
 
    ```
    ns1.vercel-dns.com
    ns2.vercel-dns.com
    ```
+
+   La zona ya está replicada en Vercel, así que el correo no se corta al
+   hacerlo.
 
    ✅ **La zona de correo ya está cargada en Vercel** (26-sep-2026), así que
    el correo no se corta en el momento del cambio: sigue yendo al hosting
