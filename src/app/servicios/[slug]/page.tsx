@@ -69,7 +69,13 @@ export default async function PaginaServicio({
       {/* ── Encabezado del servicio ─────────────────────────────────────── */}
       <section className="bg-gradient-to-b from-papel-tenue to-white pb-14 pt-6 md:pb-20">
         <div className="contenedor">
-          <div className="grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-14">
+          <div
+            className={
+              servicio.imagen
+                ? 'grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-center md:gap-14'
+                : 'max-w-3xl'
+            }
+          >
             <div>
               <h1 className="text-[2rem] font-semibold leading-[1.1] text-banda sm:text-5xl">
                 {servicio.h1}
@@ -101,18 +107,23 @@ export default async function PaginaServicio({
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-2xl shadow-xl shadow-navy/10">
-              <Image
-                src={servicio.imagen.src}
-                alt={servicio.imagen.alt}
-                width={servicio.imagen.ancho}
-                height={servicio.imagen.alto}
-                priority
-                fetchPriority="high"
-                sizes="(min-width: 768px) 36rem, 100vw"
-                className="aspect-4/3 w-full object-cover md:aspect-4/5"
-              />
-            </div>
+            {/* Sin foto el encabezado va a una sola columna. Preferible a
+                repetir la de otro servicio o a poner un marcador de posición:
+                ver el TODO de video-inspeccion-de-canerias en content/site.ts. */}
+            {servicio.imagen && (
+              <div className="overflow-hidden rounded-2xl shadow-xl shadow-banda/10">
+                <Image
+                  src={servicio.imagen.src}
+                  alt={servicio.imagen.alt}
+                  width={servicio.imagen.ancho}
+                  height={servicio.imagen.alto}
+                  priority
+                  fetchPriority="high"
+                  sizes="(min-width: 768px) 36rem, 100vw"
+                  className="aspect-4/3 w-full object-cover md:aspect-4/5"
+                />
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -122,13 +133,13 @@ export default async function PaginaServicio({
         <div className="contenedor grid gap-12 md:grid-cols-2 md:gap-16">
           <div>
             <h2 className="text-2xl font-bold text-banda sm:text-3xl">
-              Cómo te das cuenta
+              {servicio.titulos?.sintomas ?? 'Cómo te das cuenta'}
             </h2>
             <ListaConCheck items={servicio.sintomas} />
           </div>
           <div>
             <h2 className="text-2xl font-bold text-banda sm:text-3xl">
-              Por qué se tapa
+              {servicio.titulos?.causas ?? 'Por qué se tapa'}
             </h2>
             <ListaConCheck items={servicio.causas} />
           </div>
@@ -139,7 +150,7 @@ export default async function PaginaServicio({
       <section className="sobre-oscuro bg-banda py-14 text-white md:py-20">
         <div className="contenedor">
           <h2 className="max-w-2xl text-2xl font-bold sm:text-3xl">
-            Cómo lo resolvemos
+            {servicio.titulos?.resolucion ?? 'Cómo lo resolvemos'}
           </h2>
           <ol className="mt-6 max-w-3xl space-y-5">
             {servicio.resolucion.map((paso, i) => (

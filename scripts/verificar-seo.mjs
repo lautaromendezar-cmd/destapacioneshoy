@@ -10,18 +10,22 @@
 
 const BASE = process.env.BASE ?? 'http://localhost:3210'
 
-const rutas = [
-  '/',
-  '/servicios/destapacion-de-cloacas',
-  '/servicios/destapacion-de-cocinas-lavaderos-y-banos',
-  '/servicios/destapacion-de-pluviales-patios-y-terrazas',
-  '/servicios/destapaciones-para-edificios-locales-y-comercios',
-  '/servicios/desagote-de-sotanos-con-bomba',
-  '/zonas/caba',
-  '/zonas/zona-norte',
-  '/zonas/zona-oeste',
-  '/zonas/zona-sur',
-]
+/**
+ * Las rutas salen del sitemap, no de una lista a mano.
+ *
+ * Estaban escritas acá y al agregar un servicio el chequeo siguió diciendo
+ * "sin problemas en 10 páginas" sin haber mirado la nueva. Un verificador que
+ * no sabe que existe una página es peor que no tenerlo.
+ */
+const sitemap = await (await fetch(`${BASE}/sitemap.xml`)).text()
+const rutas = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)]
+  .map((m) => new URL(m[1]).pathname)
+  .sort((a, b) => a.length - b.length || a.localeCompare(b))
+
+if (rutas.length === 0) {
+  console.error('\n  El sitemap no devolvió ninguna URL. ¿Está el sitio corriendo?\n')
+  process.exit(1)
+}
 
 const problemas = []
 const titulos = new Map()
@@ -126,13 +130,13 @@ for (const ruta of rutas) {
 }
 
 // ── sitemap y robots ──────────────────────────────────────────────────────
-const sitemap = await (await fetch(BASE + '/sitemap.xml')).text()
-const enSitemap = [...sitemap.matchAll(/<loc>([^<]*)<\/loc>/g)].map((m) => m[1])
-console.log(`\n  sitemap.xml: ${enSitemap.length} URLs`)
-for (const ruta of rutas) {
-  if (!enSitemap.some((u) => new URL(u).pathname === ruta)) {
-    problemas.push(`sitemap.xml no incluye ${ruta}`)
-  }
+// El sitemap ya se bajó arriba: es de donde salen las rutas. Por eso no queda
+// nada que chequear sobre si "incluye" cada ruta —siempre sería que sí—, pero
+// sí sirve ver que no liste dos veces la misma URL.
+console.log(`\n  sitemap.xml: ${rutas.length} URLs`)
+const repetidas = rutas.filter((r, i) => rutas.indexOf(r) !== i)
+for (const r of new Set(repetidas)) {
+  problemas.push(`sitemap.xml lista ${r} más de una vez`)
 }
 
 const robots = await (await fetch(BASE + '/robots.txt')).text()

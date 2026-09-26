@@ -6,6 +6,7 @@ import {
   CookingPot,
   House,
   MapPin,
+  ScanSearch,
   Phone,
   ShieldCheck,
   Truck,
@@ -37,6 +38,7 @@ const MAPA = {
   mapa: MapPin,
   telefono: Phone,
   camion: Truck,
+  camara: ScanSearch,
 } as const
 
 export function Icono({

@@ -50,6 +50,7 @@ export type NombreIcono =
   | 'mapa'
   | 'telefono'
   | 'camion'
+  | 'camara'
 
 export interface Imagen {
   src: string
@@ -78,7 +79,20 @@ export interface Servicio {
   causas: string[]
   /** "Cómo lo resolvemos" */
   resolucion: string[]
-  imagen: Imagen
+  /**
+   * Los títulos de esas tres listas por defecto hablan de una obstrucción.
+   * Un servicio que no destapa nada —la video inspección— los pisa acá.
+   */
+  titulos?: {
+    sintomas?: string
+    causas?: string
+    resolucion?: string
+  }
+  /**
+   * Opcional: sin foto, el encabezado de la página va a una sola columna.
+   * Preferible a inventar una imagen o a repetir la de otro servicio.
+   */
+  imagen?: Imagen
 }
 
 export interface Zona {
@@ -372,6 +386,69 @@ export const servicios: Servicio[] = [
       ancho: 899,
       alto: 1599,
     },
+  },
+  /**
+   * El único servicio que el cliente pidió agregar, por WhatsApp el 26-sep-2026:
+   * "un equipo con una sonda con cámara para ver el interior de los caños
+   * cloacales, para ver la obstrucción que tienen y ver si están rotos".
+   *
+   * El texto no va más allá de eso. Lo que NO se puede afirmar todavía está
+   * abajo, en los TODO: sin esas respuestas la página se queda corta justo en
+   * lo que decide la contratación, que es si el video se lo llevan o no.
+   */
+  {
+    slug: 'video-inspeccion-de-canerias',
+    nombre: 'Video inspección de cañerías',
+    nombreCorto: 'Video inspección',
+    icono: 'camara',
+    resumen:
+      'Metemos una sonda con cámara y miramos el caño por dentro: qué lo tapa, en qué punto está y si está roto.',
+    h1: 'Video inspección de cañerías en CABA y Provincia',
+    metaTitle: 'Video inspección de cañerías con cámara',
+    metaDescription:
+      'Vemos el interior del caño con una sonda con cámara: dónde está la obstrucción y si la cañería está rota, antes de picar. CABA y Provincia. 11 3163-5383.',
+    intro: [
+      'Cuando un desagüe se tapa seguido, destapar y volver a destapar no resuelve nada: hay algo en el caño que lo vuelve a juntar. La video inspección sirve para dejar de adivinar.',
+      'Metemos una sonda con cámara por la cámara de inspección o por el desagüe que ya existe y miramos el caño por dentro en la pantalla: qué lo está tapando, en qué punto exacto y si el caño está partido, hundido o con raíces.',
+    ],
+    titulos: {
+      sintomas: 'Cuándo conviene hacerla',
+      causas: 'Qué se ve en la cámara',
+      resolucion: 'Cómo la hacemos',
+    },
+    sintomas: [
+      'El mismo desagüe se tapa cada pocas semanas y nadie sabe por qué.',
+      'Ya destaparon y volvió a taparse en el mismo lugar.',
+      'Aparecen manchas de humedad o hundimientos en el piso o el patio.',
+      'Antes de picar un piso o abrir una pared, para saber dónde hay que hacerlo.',
+      'En una compra o un alquiler, para saber en qué estado están las cañerías.',
+      'En un consorcio, para saber si el problema es de una unidad o de la columna.',
+    ],
+    causas: [
+      'Raíces metidas por las juntas de los caños de cerámica.',
+      'Un caño partido, desplazado o hundido por el asentamiento del terreno.',
+      'Grasa endurecida pegada a la pared del caño, que va cerrando el paso.',
+      'Escombros, arena o cal que quedaron adentro después de una obra.',
+      'Un objeto atascado en un punto fijo, que es lo que junta todo lo demás.',
+    ],
+    resolucion: [
+      'Ubicamos la cámara de inspección o el desagüe por donde conviene entrar.',
+      'Pasamos la sonda con la cámara en la punta y recorremos el caño mirando la pantalla.',
+      'Te mostramos en el momento qué hay adentro y en qué punto está.',
+      'Con eso decidimos juntos si alcanza con destapar o si hay que reparar, y dónde.',
+    ],
+    // TODO: confirmar con el cliente — ¿la video inspección se cobra aparte o
+    // va incluida cuando además destapan? Es lo primero que va a preguntar.
+    // TODO: confirmar con el cliente — ¿le entregan el video o las fotos al
+    // dueño? Para un consorcio o para una compraventa, ESO es el servicio:
+    // sin la grabación en la mano no le sirve para reclamar ni para negociar.
+    // TODO: confirmar con el cliente — ¿hasta qué diámetro de caño entra la
+    // sonda? Sin ese dato no se puede decir si sirve para una columna montante.
+    // TODO: falta la foto del equipo. La que mandó por WhatsApp es la del
+    // aviso de venta, con los globos de "9 pulgadas" y "7mm" encima: no se
+    // puede publicar. Hace falta una foto del equipo suyo trabajando y, sobre
+    // todo, una captura de la pantalla con el caño por dentro — esa imagen es
+    // la que vende el servicio. Ver instrucciones en CLAUDE.md.
   },
   {
     slug: 'desagote-de-sotanos-con-bomba',

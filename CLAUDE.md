@@ -188,6 +188,27 @@ mediana. El escalonado sale de `--paso`, que cada elemento fija inline.
 esquema de las diez páginas —"SERVICIOS", "ZONAS", "CONTACTO"— compitiendo con
 los títulos reales sin aportar nada. El `<nav>` los anuncia por `aria-label`.
 
+**La video inspección es lo único que el cliente pidió agregar** (WhatsApp,
+26-sep-2026). Su descripción textual: "un equipo con una sonda con cámara para
+ver el interior de los caños cloacales, para ver la obstrucción que tienen y
+ver si están rotos". El texto de la página no va más allá de eso.
+
+**Esa página va sin foto a propósito.** La que mandó es la del aviso de venta
+del equipo, con los globos de "9 pulgadas" y "7mm" encima: no es suya y no se
+publica. `Servicio.imagen` es opcional y sin ella el encabezado va a una sola
+columna. Lo que hay que pedirle son dos cosas, y la segunda importa más que la
+primera: una foto del equipo suyo en un trabajo, y **una captura de la pantalla
+con el caño por dentro**. Esa captura es el servicio; el equipo cerrado en su
+valija no le dice nada a nadie.
+
+**`Servicio.titulos` pisa los tres títulos de sección.** Los de fábrica
+—"Cómo te das cuenta", "Por qué se tapa", "Cómo lo resolvemos"— hablan de una
+obstrucción, y hay servicios que no destapan nada.
+
+**`verificar-seo` saca las rutas del sitemap, no de una lista.** Estaban a mano
+y al agregar un servicio el chequeo siguió diciendo "sin problemas en 10
+páginas" sin haber mirado la nueva.
+
 **Ninguna foto se repite en la home.** Las dos del collage de servicios no
 están en la galería, y la galería quedó con cuatro en una sola fila, que es la
 franja que él tenía.
