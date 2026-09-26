@@ -100,6 +100,12 @@ export interface Servicio {
    * Preferible a inventar una imagen o a repetir la de otro servicio.
    */
   imagen?: Imagen
+  /**
+   * Opcional: pisa la bajada de la tarjeta para compartir. La de fábrica
+   * —"Con máquina, sin roturas"— describe una destapación, y hay servicios
+   * que no destapan nada.
+   */
+  ogBajada?: string
 }
 
 export interface Zona {
@@ -446,9 +452,6 @@ export const servicios: Servicio[] = [
     ],
     // TODO: confirmar con el cliente — ¿la video inspección se cobra aparte o
     // va incluida cuando además destapan? Es lo primero que va a preguntar.
-    // TODO: confirmar con el cliente — ¿le entregan el video o las fotos al
-    // dueño? Para un consorcio o para una compraventa, ESO es el servicio:
-    // sin la grabación en la mano no le sirve para reclamar ni para negociar.
     // TODO: confirmar con el cliente — ¿hasta qué diámetro de caño entra la
     // sonda? Sin ese dato no se puede decir si sirve para una columna montante.
     imagen: {
@@ -460,6 +463,9 @@ export const servicios: Servicio[] = [
       // el caño por dentro es lo que muestra el servicio.
       encuadre: '50% 22%',
     },
+    // La bajada de fábrica habla de destapar con máquina sin romper, que
+    // acá no aplica: esta página no destapa nada.
+    ogBajada: 'Vemos el caño por dentro · CABA y Provincia · 24 hs',
   },
   {
     slug: 'desagote-de-sotanos-con-bomba',

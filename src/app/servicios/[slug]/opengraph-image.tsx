@@ -17,7 +17,7 @@ export default async function Og({ params }: { params: Promise<{ slug: string }>
   return renderOg({
     titulo: servicio?.nombre ?? 'Destapaciones 24 hs',
     bajada: servicio
-      ? 'Con máquina, sin roturas · CABA y Provincia · 24 hs'
+      ? (servicio.ogBajada ?? 'Con máquina, sin roturas · CABA y Provincia · 24 hs')
       : 'CABA y Provincia · 24 hs',
   })
 }
