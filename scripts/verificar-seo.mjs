@@ -85,8 +85,14 @@ for (const ruta of rutas) {
   const imgs = [...html.matchAll(/<img\b[^>]*>/g)].map((m) => m[0])
   for (const img of imgs) {
     const alt = /alt="([^"]*)"/.exec(img)?.[1]
+    // Una imagen decorativa (el fondo del hero) lleva alt="" A PROPÓSITO, y
+    // se declara con aria-hidden o role="presentation". Ponerle texto sería
+    // peor: el lector de pantalla leería la foto antes del H1.
+    const decorativa = /aria-hidden="true"|role="presentation"/.test(img)
     if (alt === undefined) donde(`<img> sin alt: ${img.slice(0, 70)}`)
-    else if (alt.trim().length < 5) donde(`alt muy corto ("${alt}")`)
+    else if (decorativa) {
+      if (alt !== '') donde(`imagen decorativa con alt no vacío ("${alt}")`)
+    } else if (alt.trim().length < 5) donde(`alt muy corto ("${alt}")`)
   }
 
   // ── JSON-LD parseable ───────────────────────────────────────────────────

@@ -50,42 +50,36 @@ for (const [origen, destino, ancho, calidad] of fotos) {
 }
 
 /**
- * Hero: dos recortes distintos, cada uno en varios anchos.
+ * Fondo del hero: la foto a sangre que el sitio de WordPress ya usaba detrás
+ * del título. Se bajó del server del cliente para que el hero nuevo sea el
+ * mismo que él conoce; el original queda en _rescate/.
  *
- * El hero es el LCP del sitio, así que es el único lugar donde no se usa
- * next/image: hace falta <picture> con <source media> para que el navegador
- * baje UN solo archivo. Con next/image y dos <Image> alternados por CSS se
- * bajaban los dos (display:none no evita la descarga, y encima Next precarga
- * ambos): 48 KB en el celular para mostrar 20.
- *
- * En mobile se ve una franja de 176px de alto; en desktop, una columna 4:5.
+ * Va siempre debajo de un velo negro al 60%, así que no necesita calidad alta.
+ * Dos encuadres: apaisado para desktop y un recorte vertical desde el centro
+ * para mobile, donde el apaisado deja la mano fuera de cuadro.
  */
 {
-  const origen = join(ORIGEN, '1005.png')
+  const origen = join(ORIGEN, 'hero-fondo-original.jpg')
   const { width, height } = await sharp(origen).metadata()
 
-  // Franja de mobile: la banda de la foto donde están la mano y la máquina.
-  const altoTira = Math.round(height * 0.29)
-  const arribaTira = Math.round((height - altoTira) * 0.62)
-  for (const ancho of [480, 768, 1080]) {
-    const salida = join(IMAGENES, `hero-tira-${ancho}.webp`)
+  for (const ancho of [768, 1152, 1376]) {
+    const salida = join(IMAGENES, `hero-fondo-ancho-${ancho}.webp`)
     await sharp(origen)
-      .extract({ left: 0, top: arribaTira, width, height: altoTira })
       .resize({ width: ancho, withoutEnlargement: true })
-      .webp({ quality: 74, effort: 6 })
+      .webp({ quality: 68, effort: 6 })
       .toFile(salida)
     await registrar(salida)
   }
 
-  // Columna de desktop: 4:5 desde arriba (el único encuadre que no corta la
-  // cabeza; se compararon los recortes antes de elegirlo).
-  const altoCol = Math.round(width * 5 / 4)
-  for (const ancho of [400, 560, 800, 1120]) {
-    const salida = join(IMAGENES, `hero-columna-${ancho}.webp`)
+  // Vertical 3:4 tomado del centro: es donde están las manos y la sonda.
+  const anchoVert = Math.round(height * 3 / 4)
+  const izquierda = Math.round((width - anchoVert) * 0.5)
+  for (const ancho of [480, 720]) {
+    const salida = join(IMAGENES, `hero-fondo-alto-${ancho}.webp`)
     await sharp(origen)
-      .extract({ left: 0, top: 0, width, height: Math.min(altoCol, height) })
+      .extract({ left: izquierda, top: 0, width: anchoVert, height })
       .resize({ width: ancho, withoutEnlargement: true })
-      .webp({ quality: 74, effort: 6 })
+      .webp({ quality: 68, effort: 6 })
       .toFile(salida)
     await registrar(salida)
   }

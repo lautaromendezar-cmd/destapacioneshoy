@@ -178,24 +178,22 @@ export const barraSuperior = {
 }
 
 export const hero = {
-  h1: 'Destapaciones 24 hs en CABA y Provincia',
-  subtitulo:
-    'Cloacas, cocinas, baños y pluviales. Con máquina, sin romper pisos ni paredes, y con garantía.',
+  /**
+   * El H1 va partido en dos porque se pinta en dos colores, igual que en el
+   * sitio anterior del cliente: la primera parte en blanco y la segunda en
+   * azul claro. Es lo primero que él reconoce de su propia página, así que la
+   * redacción es la suya, tal cual la tenía en WordPress.
+   */
+  h1: {
+    blanco: 'Servicio de destapaciones',
+    azul: '24 hs en CABA y Provincia',
+  },
+  /** La línea de urgencia del sitio viejo, sin los emojis. */
+  subtitulo: 'Urgencias las 24 hs, los 365 días del año.',
   /** Tres pruebas cortas, arriba del botón. */
   sellos: ['Sin roturas', 'Con garantía', 'Vamos hoy'],
   botonLlamar: 'Llamar ahora',
   botonWhatsapp: 'Escribir por WhatsApp',
-  /**
-   * El `alt` de la foto del hero. Los archivos NO salen de acá: el hero usa
-   * dos recortes distintos según la pantalla y se arman en
-   * src/components/secciones/HeroImagen.tsx (ver CLAUDE.md).
-   */
-  imagen: {
-    src: '/images/hero-columna-560.webp',
-    alt: 'Técnico de Destapaciones HOY operando una máquina de sonda para destapar el desagüe de un baño',
-    ancho: 1080,
-    alto: 1350,
-  } satisfies Imagen,
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════

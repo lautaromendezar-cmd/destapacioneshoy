@@ -41,6 +41,14 @@
   --font-sans: var(--fuente-archivo), ui-sans-serif, system-ui, -apple-system,
     'Segoe UI', Roboto, Arial, sans-serif;
 
+  /* ── Colores heredados del WordPress del cliente ──────────────────────
+     Sacados con el cuentagotas del sitio viejo, que sigue en línea, para que
+     el hero nuevo sea el que él ya conoce. Los degradés terminan más oscuros
+     que los originales: los de Elementor cerraban en #25D366 y #60A0C2, que
+     con texto blanco dan 1.98:1 y 2.87:1 y son ilegibles. Se bajó el punto
+     final hasta que el tramo más claro pasa 4.5:1, sin cambiar el tono. */
+  --color-azul-titulo: #90b5ff; /* el 2º renglón del H1 del sitio viejo */
+
   /* Alto de la barra fija de mobile, para reservar espacio abajo */
   --espacio-barra-fija: 4.5rem;
 }
@@ -145,4 +153,35 @@
   to {
     transform: none;
   }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DEGRADÉS DEL SITIO ANTERIOR
+   ───────────────────────────────────────────────────────────────────────────
+   El cliente reconoce su página por estos tres degradés. Se copiaron los
+   ángulos y los tonos de arranque tal cual; lo único que se movió es el punto
+   final de los dos botones, que en el original dejaba el texto blanco por
+   debajo del mínimo de contraste (ver el comentario de los tokens).
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@utility degrade-wa {
+  background-image: linear-gradient(18deg, #075e54 0%, #0c8654 100%);
+}
+
+@utility degrade-wa-fuerte {
+  background-image: linear-gradient(18deg, #054841 0%, #0a6f45 100%);
+}
+
+@utility degrade-azul {
+  background-image: linear-gradient(18deg, #0a0c4b 0%, #2c6e9b 100%);
+}
+
+@utility degrade-azul-fuerte {
+  background-image: linear-gradient(18deg, #070939 0%, #245a80 100%);
+}
+
+/* La barra de urgencia de arriba de todo. 57deg y los dos tonos son los del
+   sitio viejo, sin tocar: ahí el texto blanco ya daba de sobra. */
+@utility degrade-barra {
+  background-image: linear-gradient(57deg, #021a66 0%, #0f0d0d 100%);
 }

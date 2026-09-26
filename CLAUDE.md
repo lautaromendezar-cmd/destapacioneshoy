@@ -119,7 +119,7 @@ src/
   components/
     layout/                Encabezado, PieDePagina, BarraFija
     secciones/             Hero, Servicios, PorQueElegirnos, Galeria, Zonas,
-                           Pasos, Faq, CtaFinal, HeroImagen
+                           Pasos, Faq, CtaFinal, HeroFondo
     ui/                    Botones, Icono, Migas, ListaConCheck
     medicion/              Etiquetas (GTM/gtag) y MedidorDeClicks
   lib/
@@ -145,12 +145,29 @@ botón, vas a estar midiendo dos veces.
 de este sitio llega con una urgencia: es exactamente el que toca "Llamar" en el
 primer segundo. Esas llamadas no se medían.
 
+**El hero es una copia del que el cliente tenía en WordPress.** Foto a sangre,
+velo oscuro, título centrado partido en blanco y azul (`#90B5FF`), dos botones
+en degradé y el corte en diagonal de Elementor al cerrar. No es una decisión
+estética libre: cuando el cliente abre el sitio nuevo tiene que reconocer el
+suyo. **Antes de rediseñarlo, preguntarle.** Lo único que se cambió del
+original es lo que estaba roto — el teléfono pasó de link de texto a botón
+principal, los degradés se cerraron en tonos más oscuros porque los de
+Elementor daban 1.98:1 y 2.87:1 con texto blanco, y salieron los emojis. La
+referencia viva mientras el dominio siga en WordPress es
+`https://destapacioneshoy.com.ar`; la foto original está en
+`_rescate/hero-fondo-original.jpg`.
+
 **La foto del hero no pasa por `next/image`.** Es el único caso: en mobile se
-muestra una franja horizontal y en desktop una columna vertical — dos recortes
-distintos, o sea art direction, que se resuelve con `<picture>` + `<source
-media>`. Alternar dos `<Image>` con clases de Tailwind **no funciona**:
-`display:none` no evita la descarga y Next precarga los dos, así que el celular
-bajaba 48 KB para mostrar 20. Ver `src/components/secciones/HeroImagen.tsx`.
+muestra un recorte vertical y en desktop uno apaisado — dos recortes distintos,
+o sea art direction, que se resuelve con `<picture>` + `<source media>`.
+Alternar dos `<Image>` con clases de Tailwind **no funciona**: `display:none`
+no evita la descarga y Next precarga los dos. Ver
+`src/components/secciones/HeroFondo.tsx`.
+
+**El velo del hero son dos capas, no una.** El original usaba un negro plano al
+60%. La foto tiene reflejos quemados y, sobre ellos, el azul del título caía a
+2.8:1. Con la segunda capa en degradé el peor píxel posible queda en 4.98:1 y
+se ve prácticamente igual. No reemplazarlas por una sola sin volver a medir.
 
 **La animación de entrada mueve sólo el `transform`, nunca la opacidad.** Una
 animación con `opacity: 0` y `fill: both` deja el contenido invisible apenas el

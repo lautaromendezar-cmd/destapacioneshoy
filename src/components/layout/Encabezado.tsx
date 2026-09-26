@@ -14,7 +14,7 @@ import { datosCta, linkTelefono, rutas } from '@/lib/rutas'
 export function Encabezado() {
   return (
     <header>
-      <div className="sobre-oscuro bg-navy text-white">
+      <div className="sobre-oscuro degrade-barra text-white">
         <div className="contenedor flex items-center justify-center py-1.5">
           <p className="text-[13px] font-medium tracking-wide">
             {barraSuperior.texto}

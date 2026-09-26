@@ -31,6 +31,7 @@ export function BotonLlamar({
   className = '',
   conNumero = true,
   etiqueta,
+  variante = 'lleno',
 }: {
   ubicacion: UbicacionCta
   tamano?: Tamano
@@ -38,12 +39,19 @@ export function BotonLlamar({
   /** Mostrar el número además del texto. En el hero conviene que se vea. */
   conNumero?: boolean
   etiqueta?: string
+  /** 'degrade' = el botón azul del hero anterior del cliente. */
+  variante?: 'lleno' | 'degrade'
 }) {
+  const estilo =
+    variante === 'degrade'
+      ? 'degrade-azul text-white hover:degrade-azul-fuerte'
+      : 'bg-acento text-white hover:bg-acento-fuerte'
+
   return (
     <a
       href={linkTelefono}
       {...datosCta('llamada', ubicacion)}
-      className={`${base} ${medidas[tamano]} bg-acento text-white hover:bg-acento-fuerte ${className}`}
+      className={`${base} ${medidas[tamano]} ${estilo} ${className}`}
     >
       <Phone
         className={tamano === 'grande' ? 'size-6 shrink-0' : 'size-5 shrink-0'}
@@ -79,12 +87,15 @@ export function BotonWhatsapp({
   /** Mensaje precargado. Por defecto, el genérico. */
   mensaje?: string
   etiqueta?: string
-  variante?: 'contorno' | 'lleno'
+  /** 'degrade' = el botón verde del hero anterior del cliente. */
+  variante?: 'contorno' | 'lleno' | 'degrade'
 }) {
   const estilo =
-    variante === 'lleno'
-      ? 'bg-wa text-white hover:bg-wa-fuerte'
-      : 'bg-white text-wa ring-2 ring-inset ring-wa hover:bg-[#f0faf7]'
+    variante === 'degrade'
+      ? 'degrade-wa text-white hover:degrade-wa-fuerte'
+      : variante === 'lleno'
+        ? 'bg-wa text-white hover:bg-wa-fuerte'
+        : 'bg-white text-wa ring-2 ring-inset ring-wa hover:bg-[#f0faf7]'
 
   return (
     <a
