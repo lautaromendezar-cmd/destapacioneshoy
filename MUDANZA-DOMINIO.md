@@ -36,7 +36,19 @@ El orden importa: cada paso depende de que el anterior esté verificado.
    NIC.ar. Vence el 1-oct-2026.
 2. **Preguntarle al cliente si usa alguna casilla `@destapacioneshoy.com.ar`.**
    Ver la sección de correo, abajo.
-3. **Cambiar los nameservers a Vercel**, en el panel de DonWeb o en NIC.ar
+3. **Antes de tocar los nameservers: dar vuelta el redirect en Vercel.** Al
+   agregar el dominio, Vercel dejó el apex redirigiendo 308 al `www` y el
+   `www` como Production. Es al revés de lo que declara el sitio: `sitio.url`,
+   el `canonical`, el sitemap y **la propiedad de Search Console** son todos
+   `https://destapacioneshoy.com.ar` **sin www**. Si queda así, todas las
+   visitas terminan en el `www`, la propiedad medida queda vacía y el
+   historial se pierde en la práctica aunque nadie lo haya borrado.
+
+   En Vercel → Settings → Domains: editar `destapacioneshoy.com.ar` para que
+   sea Production (sin redirect), y editar `www.destapacioneshoy.com.ar` para
+   que redirija 308 a `destapacioneshoy.com.ar`.
+
+4. **Cambiar los nameservers a Vercel**, en el panel de DonWeb o en NIC.ar
    (no en HostMar: ahí sólo está la zona delegada):
 
    ```
@@ -44,13 +56,20 @@ El orden importa: cada paso depende de que el anterior esté verificado.
    ns2.vercel-dns.com
    ```
 
-4. **Esperar a que propague** y verificar que el dominio resuelve a Vercel y
+   ✅ **La zona de correo ya está cargada en Vercel** (26-sep-2026), así que
+   el correo no se corta en el momento del cambio: sigue yendo al hosting
+   hasta que el hosting muera. Son `mail`, `mx1` y `ftp` en A, el AAAA de
+   `mail`, los dos MX, el SPF, el DMARC y el DKIM — todo copiado tal cual de
+   la zona vieja. Lo único que **no** se copió es el AAAA del apex, que
+   mandaría la web al WordPress viejo por IPv6.
+
+5. **Esperar a que propague** y verificar que el dominio resuelve a Vercel y
    que el sitio carga en `https://destapacioneshoy.com.ar/` y en el `www`.
-5. **Search Console**: recién ahí apretar VERIFICAR con el método "Etiqueta
+6. **Search Console**: recién ahí apretar VERIFICAR con el método "Etiqueta
    HTML". La etiqueta ya viaja en el sitio nuevo
    (`metadata.verification.google` en `src/app/layout.tsx`) y no se saca nunca.
    Después, enviar el sitemap: `https://destapacioneshoy.com.ar/sitemap.xml`.
-6. **Recién con todo lo anterior verificado, dar de baja el hosting.**
+7. **Recién con todo lo anterior verificado, dar de baja el hosting.**
 
 No hace falta tocar el código en ningún momento: el `noindex` está puesto por
 host en `next.config.ts`, así que el `.com.ar` se indexa solo en cuanto
