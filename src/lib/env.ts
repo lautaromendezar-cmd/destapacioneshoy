@@ -15,6 +15,12 @@ export const env = {
   /** ID de Google Tag Manager, ej. GTM-XXXXXXX */
   gtmId: leer(process.env.NEXT_PUBLIC_GTM_ID),
 
+  /**
+   * ID de medición de GA4, ej. G-XXXXXXXXXX. Sólo si NO se usa GTM. Viaja en
+   * el mismo gtag.js que Google Ads: es un `config` más, no otro script.
+   */
+  ga4Id: leer(process.env.NEXT_PUBLIC_GA4_ID),
+
   /** ID de Google Ads, ej. AW-123456789. Sólo si NO se usa GTM. */
   gadsId: leer(process.env.NEXT_PUBLIC_GADS_ID),
 
@@ -31,4 +37,4 @@ export const env = {
 } as const
 
 /** ¿Hay alguna medición configurada? Si no, el sitio anda igual, sin errores. */
-export const hayMedicion = env.gtmId !== null || env.gadsId !== null
+export const hayMedicion = env.gtmId !== null || env.gadsId !== null || env.ga4Id !== null

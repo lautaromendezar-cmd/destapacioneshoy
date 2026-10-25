@@ -2,13 +2,14 @@ import Script from 'next/script'
 import { env } from '@/lib/env'
 
 /**
- * Google Tag Manager y, opcionalmente, gtag directo de Google Ads.
+ * Google Tag Manager o, si no hay GTM, gtag directo con Google Ads y GA4.
  *
  * Las dos vías son independientes y ninguna es obligatoria: si no hay ninguna
  * variable de entorno, no se inyecta un solo byte de script y el sitio anda
  * exactamente igual.
  *
  *   NEXT_PUBLIC_GTM_ID              GTM-XXXXXXX
+ *   NEXT_PUBLIC_GA4_ID              G-XXXXXXXXXX      (sólo si no se usa GTM)
  *   NEXT_PUBLIC_GADS_ID             AW-123456789      (sólo si no se usa GTM)
  *   NEXT_PUBLIC_GADS_LABEL_LLAMADA  AbCdEfGh1234
  *   NEXT_PUBLIC_GADS_LABEL_WHATSAPP IjKlMnOp5678
@@ -17,6 +18,10 @@ import { env } from '@/lib/env'
  * en el camino crítico del LCP.
  */
 export function Etiquetas() {
+  // Un solo gtag.js sirve a los dos: se carga con el primero que haya y cada
+  // destino es un `config`.
+  const gtagIds = [env.gadsId, env.ga4Id].filter((id): id is string => id !== null)
+
   return (
     <>
       {env.gtmId && (
@@ -29,18 +34,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </Script>
       )}
 
-      {!env.gtmId && env.gadsId && (
+      {!env.gtmId && gtagIds.length > 0 && (
         <>
           <Script
             id="gtag-src"
             strategy="afterInteractive"
-            src={`https://www.googletagmanager.com/gtag/js?id=${env.gadsId}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${gtagIds[0]}`}
           />
           <Script id="gtag-init" strategy="afterInteractive">
             {`window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments);}
 gtag('js',new Date());
-gtag('config','${env.gadsId}');`}
+${gtagIds.map((id) => `gtag('config','${id}');`).join('')}`}
           </Script>
         </>
       )}

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   ...metadataDe({
     titulo: 'Destapaciones 24 hs en CABA y Provincia | Destapaciones HOY',
     descripcion:
-      'Destapamos cloacas, cocinas, baños y pluviales con máquina, las 24 hs los 365 días. CABA y Provincia, sin roturas y con garantía. Llamá al 11 3163-5383.',
+      'Urgencias de destapaciones las 24 hs, los 365 días. Cloacas, cocinas, baños y pluviales con máquina, sin roturas y con garantía. CABA y Provincia. 11 3163-5383.',
     ruta: '/',
   }),
   // La home no lleva el sufijo del template: ya nombra la marca.

@@ -1,7 +1,8 @@
 import { env } from '@/lib/env'
 
 /**
- * Mide los clicks en teléfono y WhatsApp para las conversiones de Google Ads.
+ * Mide los clicks en teléfono y WhatsApp: conversiones de Google Ads y
+ * eventos de GA4 (`click_llamada` y `click_whatsapp`).
  *
  * Dos decisiones acá, las dos por el mismo motivo: no perder conversiones.
  *
@@ -31,6 +32,7 @@ export function MedidorDeClicks() {
   const script = `
 (function () {
   var ADS = ${JSON.stringify(gads)};
+  var GA4 = ${JSON.stringify(env.ga4Id)};
   var EVENTOS = { llamada: 'click_llamada', whatsapp: 'click_whatsapp' };
 
   document.addEventListener('click', function (e) {
@@ -52,6 +54,16 @@ export function MedidorDeClicks() {
 
     if (ADS && ADS[tipo] && typeof window.gtag === 'function') {
       window.gtag('event', 'conversion', { send_to: ADS.id + '/' + ADS[tipo] });
+    }
+
+    // gtag.js no lee los push sueltos al dataLayer (eso es cosa de GTM):
+    // GA4 recibe el evento sólo si se le manda por gtag.
+    if (GA4 && typeof window.gtag === 'function') {
+      window.gtag('event', EVENTOS[tipo], {
+        send_to: GA4,
+        ubicacion_boton: ubicacion,
+        pagina: window.location.pathname
+      });
     }
   }, true);
 })();
