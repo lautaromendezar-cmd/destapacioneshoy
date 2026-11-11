@@ -87,6 +87,12 @@ export interface Servicio {
   /** "Cómo lo resolvemos" */
   resolucion: string[]
   /**
+   * Opcional: preguntas propias de este servicio, con la respuesta directa.
+   * Salen de búsquedas reales de Search Console (p. ej. la gente que llega a
+   * cloacas buscando "aysa reclamos"). Van visibles y en FAQPage.
+   */
+  preguntas?: Faq[]
+  /**
    * Los títulos de esas tres listas por defecto hablan de una obstrucción.
    * Un servicio que no destapa nada —la video inspección— los pisa acá.
    */
@@ -126,6 +132,8 @@ export interface Zona {
 export interface Faq {
   pregunta: string
   respuesta: string
+  /** Opcional: fuente externa que respalda la respuesta, enlazada debajo. */
+  fuente?: { nombre: string; url: string }
 }
 
 export interface Paso {
@@ -244,8 +252,8 @@ export const servicios: Servicio[] = [
     metaDescription:
       '¿La cámara rebalsa o el inodoro borbotea? Destapamos cloacas con máquina de sonda, sin romper. 24 hs en CABA y Provincia. Llamá al 11 3163-5383.',
     intro: [
+      'Destapamos cloacas en CABA y Provincia las 24 horas, con máquina de sonda rotativa que entra por la cámara de inspección o por el desagüe que ya existe: no hay que picar el piso ni abrir paredes. Si sospechamos que el caño está partido o tiene raíces, lo miramos por dentro con cámara.',
       'Una cloaca tapada nunca avisa con tiempo. Lo primero que aparece suele ser el inodoro que traga lento, y en pocas horas el agua empieza a volver por la rejilla del patio o del lavadero.',
-      'Trabajamos con máquinas de sonda rotativa que entran por la cámara de inspección o por el desagüe que ya existe. No hay que picar el piso ni abrir paredes para destapar una cloaca.',
     ],
     sintomas: [
       'El inodoro traga lento o hace burbujas cuando tirás la cadena.',
@@ -266,6 +274,22 @@ export const servicios: Servicio[] = [
       'Pasamos la sonda con el espiral que corresponda al diámetro del caño: no es lo mismo un desagüe secundario que la conexión a la red.',
       'Corremos agua delante tuyo hasta verificar que escurre bien y que no vuelve.',
       'Dejamos la cámara tapada y el sector limpio.',
+    ],
+    preguntas: [
+      {
+        pregunta: '¿La cloaca tapada la destapa AySA o la tengo que pagar yo?',
+        respuesta:
+          'Depende de dónde esté la obstrucción. AySA responde por la red pública y la conexión hasta la línea municipal, que es el frente de la propiedad. De ahí hacia adentro (la cámara de inspección, el patio y los caños de la casa o del edificio) la instalación es del dueño o del consorcio, y la destapación también. Si el tapón está en la vereda o en la calle, el reclamo va a AySA.',
+        fuente: {
+          nombre: 'AySA, guía práctica de plomería para tu casa',
+          url: 'https://www.aysa.com.ar/media-library/micromedicion/folletos/Guia_practica_plomeria_para_tu_casa.pdf',
+        },
+      },
+      {
+        pregunta: '¿Cómo sé si el problema es de mi casa o de la red?',
+        respuesta:
+          'Abrí la cámara de inspección, que suele estar en el patio o cerca del frente. Si está llena o rebalsa, el tapón está más abajo, entre la cámara y la red. Si está vacía mientras el inodoro o la rejilla no tragan, el problema está adentro, antes de la cámara. En los dos casos, cuando llegamos lo ubicamos con la sonda y, si hace falta, con la cámara de video inspección.',
+      },
     ],
     imagen: {
       src: '/images/camara-inspeccion-canerias-destapada.webp',
@@ -519,7 +543,7 @@ export const servicios: Servicio[] = [
 export const introServicios = {
   titulo: 'Servicios de destapaciones y desagotes',
   texto:
-    'Atendemos todo tipo de destapaciones y desagotes, con máquinas profesionales y bombas centrífugas. Limpieza rápida, sin roturas y con garantía.',
+    'Destapamos cloacas, cocinas, baños y pluviales en Capital y toda la Provincia, las 24 horas y los 365 días, feriados incluidos. Trabajamos con máquinas de sonda y bombas centrífugas, sin romper pisos ni paredes. Te decimos el precio antes de empezar y el trabajo queda garantizado.',
   /**
    * Dos fotos, no una: su bloque era un collage de dos trabajos superpuestos.
    * Ninguna de las dos se repite en la galería de más abajo.
@@ -593,6 +617,7 @@ export const zonas: Zona[] = [
     metaDescription:
       'Destapaciones de cloacas, cocinas, baños y pluviales en Capital Federal, las 24 horas. Trabajamos en PH, departamentos, edificios y locales. 11 3163-5383.',
     intro: [
+      'Hacemos destapaciones de cloacas, cocinas, baños y pluviales en todos los barrios de Capital Federal, las 24 horas: casas, PH, departamentos, edificios y locales. Trabajamos con máquina de sonda, sin romper, y el precio te lo decimos antes de empezar.',
       'En Capital casi todo el trabajo pasa por dos cosas: la antigüedad de la cañería y el hecho de que el desagüe casi nunca es de una sola familia.',
       'Buena parte de los PH y edificios de CABA todavía desagotan por caños de cerámica o de hierro instalados hace décadas, con décadas de sarro y grasa encima. Y cuando el problema está en la columna montante, la obstrucción de un piso aparece como agua en el de abajo.',
     ],
@@ -631,6 +656,7 @@ export const zonas: Zona[] = [
     metaDescription:
       'Destapaciones y desagotes en Zona Norte: Vicente López, Olivos, San Isidro, Martínez, San Fernando y Tigre. Bomba centrífuga para sótanos. 11 3163-5383.',
     intro: [
+      'Hacemos destapaciones y desagotes las 24 horas en Zona Norte: Vicente López, Olivos, Florida, Martínez, San Isidro, Beccar, San Fernando, Tigre y alrededores. Destapamos con máquina de sonda, sin romper, y desagotamos sótanos con bomba centrífuga.',
       'Zona Norte tiene dos problemas propios que casi no aparecen en otros lados: los árboles y el río.',
       'Las casas con jardín y arboleda grande conviven con cañerías de cerámica que tienen juntas cada un metro. La raíz encuentra la humedad, entra por la junta y adentro del caño se abre como una red. Y en la franja cercana al río, la napa alta hace que cualquier sótano o subsuelo sea candidato a juntar agua.',
     ],
@@ -667,6 +693,7 @@ export const zonas: Zona[] = [
     metaDescription:
       'Destapaciones de cloacas y pluviales en Zona Oeste: Ramos Mejía, Haedo, Morón, Castelar, Ituzaingó, San Justo y alrededores. 24 hs. 11 3163-5383.',
     intro: [
+      'Hacemos destapaciones de cloacas y pluviales las 24 horas en Zona Oeste: Ramos Mejía, Haedo, Morón, Castelar, Ituzaingó, San Justo, Caseros, Hurlingham y alrededores. Trabajamos con máquina de sonda, sin romper, en casas, edificios y comercios.',
       'En Zona Oeste el trabajo se concentra en dos frentes: los pluviales y los comercios sobre avenida.',
       'Es una zona de casas bajas con patio y terraza propios, donde el desagüe de lluvia es responsabilidad de cada uno y nadie lo revisa hasta que llueve en serio. Sumado a eso, hay sectores que se anegan rápido cuando cae mucha agua junta, y ahí el pluvial tapado deja de ser un detalle.',
     ],
@@ -703,6 +730,7 @@ export const zonas: Zona[] = [
     metaDescription:
       'Destapaciones y desagote de sótanos en Zona Sur: Avellaneda, Lanús, Lomas de Zamora, Quilmes, Banfield y alrededores. 24 hs con máquina. 11 3163-5383.',
     intro: [
+      'Hacemos destapaciones y desagote de sótanos las 24 horas en Zona Sur: Avellaneda, Lanús, Lomas de Zamora, Banfield, Temperley, Adrogué, Quilmes, Bernal y alrededores. Destapamos con máquina de sonda, sin romper, y desagotamos con bomba centrífuga.',
       'Zona Sur es tierra baja, y eso cambia el tipo de llamado. Acá el desagote con bomba pesa tanto como la destapación.',
       'Buena parte de la zona tiene napa cerca de la superficie: los sótanos, subsuelos y cocheras juntan agua incluso sin tormenta, y cuando llueve fuerte el pluvial tapado termina de cerrar el problema. A eso se suma el parque de casas antiguas con cañería de cerámica y mucho galpón e industria con desagües de caudal alto.',
     ],

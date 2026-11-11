@@ -45,6 +45,19 @@ export function Faq({
               <p className="pb-5 pr-9 leading-relaxed text-tinta-suave">
                 {faq.respuesta}
               </p>
+              {faq.fuente && (
+                <p className="-mt-2 pb-5 pr-9 text-sm text-tinta-suave">
+                  Fuente:{' '}
+                  <a
+                    href={faq.fuente.url}
+                    target="_blank"
+                    rel="noopener"
+                    className="font-medium text-navy underline underline-offset-4 hover:text-acento"
+                  >
+                    {faq.fuente.nombre}
+                  </a>
+                </p>
+              )}
             </details>
           ))}
         </div>

@@ -8,10 +8,11 @@ import { Migas } from '@/components/ui/Migas'
 import { ListaConCheck } from '@/components/ui/ListaConCheck'
 import { BotonLlamar, BotonWhatsapp } from '@/components/ui/Botones'
 import { CtaFinal } from '@/components/secciones/CtaFinal'
+import { Faq } from '@/components/secciones/Faq'
 import { servicios, zonas } from '@contenido'
 import { rutas, mensajeServicio } from '@/lib/rutas'
 import { metadataDe } from '@/lib/seo'
-import { jsonLd, migasJsonLd, servicioJsonLd } from '@/lib/jsonld'
+import { faqJsonLd, jsonLd, migasJsonLd, servicioJsonLd } from '@/lib/jsonld'
 
 /** Todas las páginas se generan en el build: no hay render en runtime. */
 export function generateStaticParams() {
@@ -63,6 +64,13 @@ export default async function PaginaServicio({
           ),
         }}
       />
+
+      {servicio.preguntas && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLd(faqJsonLd(servicio.preguntas)) }}
+        />
+      )}
 
       <Migas items={[{ nombre: servicio.nombreCorto, ruta: rutas.servicio(servicio.slug) }]} />
 
@@ -167,6 +175,10 @@ export default async function PaginaServicio({
           </ol>
         </div>
       </section>
+
+      {servicio.preguntas && (
+        <Faq preguntas={servicio.preguntas} titulo="Preguntas sobre este servicio" />
+      )}
 
       {/* ── Links internos ──────────────────────────────────────────────── */}
       <section className="border-t border-borde bg-papel-tenue py-14 md:py-20">
